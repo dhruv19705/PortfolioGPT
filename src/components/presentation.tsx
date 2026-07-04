@@ -3,11 +3,16 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
-import { profileInfo } from '@/lib/config-loader';
+import { getConfig, profileInfo } from '@/lib/config-loader';
 
 export function Presentation() {
-  // Personal information now loaded from configuration
   const profile = profileInfo;
+  const config = getConfig();
+  const tags = [
+    ...config.personal.title.split('|').map((t) => t.trim()),
+    'IEEE Researcher',
+    'Veefin Intern',
+  ];
 
   // Animation variants for text elements
   const textVariants = {
@@ -93,7 +98,7 @@ export function Presentation() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="mt-4 flex flex-wrap gap-2"
           >
-            {['AI Engineer', 'Python Developer', 'IoT Specialist', 'ML Engineer', 'Freelancer'].map(
+            {tags.map(
               (tag) => (
                 <span
                   key={tag}

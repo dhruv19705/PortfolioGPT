@@ -11,6 +11,7 @@ const SKILL_COLORS: Record<string, string> = {
   'DevOps & Tools': 'bg-emerald-50 text-emerald-600 border border-emerald-200',
   'DevOps & Cloud': 'bg-emerald-50 text-emerald-600 border border-emerald-200',
   Cybersecurity: 'bg-red-50 text-red-600 border border-red-200',
+  'Relevant Coursework': 'bg-violet-50 text-violet-600 border border-violet-200',
   'IoT & Hardware': 'bg-indigo-50 text-indigo-600 border border-indigo-200',
   'Soft Skills': 'bg-amber-50 text-amber-600 border border-amber-200',
 };
@@ -34,7 +35,11 @@ class ConfigParser {
     };
 
     add('About me / personality', 'getPresentation', pq.me);
-    add('Skills / education / hire me', 'getSkills', pq.professional);
+    add(
+      'Skills / education / hire me',
+      'getSkills',
+      pq.professional?.filter((q) => !/\b(cgpa|gpa)\b/i.test(q))
+    );
     add('Projects', 'getProjects', pq.projects);
     add('Achievements / hackathons / research', 'getAchievements', pq.achievements);
     add('Contact', 'getContact', pq.contact);
@@ -71,8 +76,8 @@ You are NOT a generic AI assistant. You ARE ${personal.name} (${personal.title})
 
 ## Tool usage (MANDATORY)
 1. For simple greetings (hi, hello, hey) with no factual question, reply warmly in first person without calling tools
-2. For factual questions about yourself, call the best matching tool before answering
-3. Never invent projects, scores, or employers — only use data returned by tools
+2. For factual questions about yourself, call the best matching tool before answering — except CGPA/GPA-only questions (answer in one sentence from Key facts below, no tool)
+3. Never invent projects, scores, or employers — only use data returned by tools or Key facts
 4. If multiple tools apply, prefer the most specific one (e.g. ChainBreak → getProjects, IEEE paper → getAchievements)
 
 ### Question → tool routing
@@ -81,7 +86,8 @@ ${routing}
 ### Quick reference
 | Topic | Tool |
 | About me, passions, fun facts | getPresentation |
-| Skills, CGPA, certs, experience | getSkills |
+| Skills, certs, experience, full education | getSkills |
+| CGPA / GPA only | Answer directly from Key facts — no tool |
 | Any project | getProjects |
 | Hackathons, IEEE, exam scores, awards | getAchievements |
 | Contact / socials | getContact |
@@ -206,7 +212,7 @@ ${highlights}
       "What's your educational background?": { reply: educationReply, tool: 'getSkills' },
       'What is your CGPA?': {
         reply: `My current CGPA is **${education.current.cgpa}** in ${education.current.degree} at ${education.current.institution}.${education.previous ? ` Previously ${education.previous.cgpa} at ${education.previous.institution}.` : ''}`,
-        tool: 'getSkills',
+        tool: '',
       },
       'Why should I hire you?': { reply: hireReply, tool: 'getSkills' },
       'What makes you stand out?': { reply: hireReply, tool: 'getSkills' },
@@ -243,7 +249,7 @@ ${highlights}
       },
       'Where are you working now?': {
         reply: currentRole
-          ? `Most recently I was **${currentRole.position}** at **${currentRole.company}** (${currentRole.duration}). I'm currently a student at ${education.current.institution} while seeking new opportunities.`
+          ? `I'm currently a **${currentRole.position}** at **${currentRole.company}** (${currentRole.duration}). I'm also in my 3rd year at ${education.current.institution} (CGPA ${education.current.cgpa}).`
           : `I'm currently pursuing my degree at ${education.current.institution}.`,
         tool: 'getSkills',
       },
@@ -272,7 +278,7 @@ ${highlights}
         tool: 'getProjects',
       },
       'Tell me about your finance projects': {
-        reply: `Finance projects: **All-in-One Investment Platform** (sector-aware Indian stock screener), **Mutual Fund Recommendation Engine** (Sharpe/Sortino/Alpha scoring), and **Gold Price Prediction** from news sentiment.`,
+        reply: `Finance projects: **Stock Fundamental Analysis & Long-Term Recommendation System** (yfinance + mftool stock/mutual fund ranking), **Mutual Fund Recommendation Engine** (Sharpe/Sortino/Alpha scoring), and **Gold Price Prediction** from news sentiment.`,
         tool: 'getProjects',
       },
       'How does your mutual fund recommendation engine work?': {
@@ -372,7 +378,11 @@ ${highlights}
         tool: 'getSkills',
       },
       'Tell me about your internship experience': {
-        reply: `I've interned as **AI/ML Intern at Ashna AI** (PDF Q&A, India's first homegrown LLM) and **ML Intern at Suvidha Foundation** (news summarisation with T5/BART). I also held a **Research Assistant** role at EUCLID with an accepted IEEE paper.`,
+        reply: `I'm currently a **Summer Intern at Veefin** (RAG-based RFP automation, Recovery Intelligence CMS, Apache Camel ETL, Postman QA). Previously **AI/ML Intern at Ashna AI**, **ML Intern at Suvidha Foundation**, and **Research Assistant at EUCLID** with an accepted IEEE paper.`,
+        tool: 'getSkills',
+      },
+      'Tell me about your Veefin internship': {
+        reply: `At **Veefin** (May 2026 – Present) I validate Trade Finance LC workflows, run REST API testing with Postman, build prompt-engineered QA pipelines (200% faster test data), and contribute to RAG-based RFP automation and Recovery Intelligence microservices integrated via Apache Camel.`,
         tool: 'getSkills',
       },
       'Tell me about your Ashna AI internship': {
@@ -416,7 +426,11 @@ ${highlights}
         tool: 'getProjects',
       },
       'Tell me about your stock screener project': {
-        reply: `**All-in-One Investment Platform** — a sector-aware Indian equity screener (Banking, IT, FMCG, Pharma, etc.) with hybrid P/E + PEG valuation and BUY/HOLD/SELL signals with confidence scores. Uses yfinance + parallel evaluation.`,
+        reply: `**Stock Fundamental Analysis & Long-Term Recommendation System** — aggregates financial metrics via yfinance, mftool, and web scrapers; ranks mutual funds by asset class and market cap; outputs long-term stock recommendations with confidence scores.`,
+        tool: 'getProjects',
+      },
+      'Tell me about your stock fundamental analysis project': {
+        reply: `**Stock Fundamental Analysis & Long-Term Recommendation System** — automated data engine for Indian equities and mutual funds with quantitative ranking and long-term BUY/HOLD/SELL-style recommendations.`,
         tool: 'getProjects',
       },
       'Tell me about CipherCop': {
@@ -428,7 +442,7 @@ ${highlights}
         tool: 'getAchievements',
       },
       'Do you have GitHub projects?': {
-        reply: `Yes — all major projects are on GitHub (@${personal.handle.replace('@', '')}). Highlights include ChainBreak, Bitcoin classification, gold price NLP, mutual fund engine, and PDF Q&A generator.`,
+        reply: `Yes — all major projects are on GitHub (@${personal.handle.replace('@', '')}). Highlights include ChainBreak, Bitcoin classification, gold price NLP, stock fundamental analysis, mutual fund engine, and PDF Q&A generator.`,
         tool: 'getProjects',
       },
       "What's your experience with NLP?": {

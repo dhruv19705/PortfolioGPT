@@ -1,5 +1,5 @@
 /** Bump when portfolio data or reply logic changes — invalidates stale cached answers. */
-export const CACHE_VERSION = '2';
+export const CACHE_VERSION = '4';
 const CLIENT_CACHE_KEY = 'portfolio-chat-cache';
 const TTL_MS = 24 * 60 * 60 * 1000;
 const MAX_SERVER_ENTRIES = 100;

@@ -43,7 +43,7 @@ export function PresetReply({ question, reply, tool, onGetAIResponse, onClose }:
       
       case 'getProjects':
         return (
-          <div className="w-full overflow-hidden rounded-lg mb-4">
+          <div className="mb-4 w-full min-w-0 overflow-visible rounded-lg">
             <AllProjects />
           </div>
         );

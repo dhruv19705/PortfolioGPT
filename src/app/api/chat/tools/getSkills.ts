@@ -5,7 +5,7 @@ import { getSkillCategories } from '@/lib/portfolio-helpers';
 
 export const getSkills = tool({
   description:
-    'Use for technical skills, CGPA, education, certifications, experience timeline, "why hire you", and qualifications questions.',
+    'Use for technical skills, full education breakdown, certifications, experience timeline, "why hire you", and qualifications questions. Do NOT use for CGPA/GPA-only questions — answer those from context instead.',
   parameters: emptyToolParameters,
   execute: async () => {
     const config = getConfig();

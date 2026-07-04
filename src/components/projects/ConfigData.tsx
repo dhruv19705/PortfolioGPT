@@ -18,17 +18,19 @@ const ProjectContent = ({ project }: { project: { title: string } }) => {
     <div className="bg-card text-card-foreground max-w-4xl space-y-6 p-0">
       {/* Header */}
       <div className="space-y-4">
-        <div className="flex items-center gap-3">
-          <div className="bg-primary/10 text-primary rounded-lg p-2">
+        <div className="flex items-start gap-3">
+          <div className="bg-primary/10 text-primary shrink-0 rounded-lg p-2">
             <Img className="h-6 w-6" />
           </div>
-          <div>
-            <h3 className="text-xl font-semibold">{projectData.title}</h3>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-xl font-semibold leading-snug break-words">
+              {projectData.title}
+            </h3>
             <p className="text-muted-foreground text-sm">{projectData.date}</p>
           </div>
         </div>
-        
-        <p className="text-muted-foreground leading-relaxed">
+
+        <p className="text-muted-foreground leading-relaxed break-words whitespace-pre-wrap">
           {projectData.description}
         </p>
       </div>

@@ -2,7 +2,7 @@
 
 An AI-powered developer portfolio built with Next.js. Visitors chat with a conversational assistant that answers questions about your background, projects, skills, and experience — backed by structured data from a single JSON config file.
 
-**Live demo:** [portfolio.dhruvshah.tech](https://portfolio.dhruvshah.tech/)
+**Live demo:** [portfolio-gpt-tau.vercel.app](https://portfolio-gpt-tau.vercel.app/)
 
 ## Features
 

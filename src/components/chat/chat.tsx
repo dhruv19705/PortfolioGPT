@@ -22,6 +22,7 @@ import {
   getRetryAfterSeconds,
   type ChatErrorType,
 } from '@/lib/chat-errors';
+import { resolvePresetQuery } from '@/lib/preset-query-matcher';
 import {
   ChatBubble,
   ChatBubbleMessage,
@@ -273,6 +274,18 @@ const Chat = () => {
       return;
     }
 
+    const presetKey = resolvePresetQuery(query, presetReplies);
+    if (presetKey && presetReplies[presetKey]) {
+      const preset = presetReplies[presetKey];
+      setPresetReply({
+        question: query,
+        reply: preset.reply,
+        tool: preset.tool,
+      });
+      setLoadingSubmit(false);
+      return;
+    }
+
     startCustomChat(query);
   };
 
@@ -305,7 +318,7 @@ const Chat = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (!input.trim() || isToolInProgress) return;
-    submitQueryToAI(input); // User input should go directly to AI
+    submitQuery(input);
     setInput('');
   };
 

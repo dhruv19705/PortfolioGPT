@@ -27,7 +27,7 @@ export default function ToolRenderer({
             return (
               <div
                 key={toolCallId}
-                className="w-full overflow-hidden rounded-lg"
+                className="w-full min-w-0 overflow-visible rounded-lg"
               >
                 <AllProjects />
               </div>

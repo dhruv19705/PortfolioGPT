@@ -79,8 +79,7 @@ export const Carousel = ({
 
   // Get the card width and gap based on viewport size
   const getScrollDistance = () => {
-    // Card width (w-80 = 320px) + gap-4 (16px)
-    const cardWidth = 320;
+    const cardWidth = carouselRef.current?.querySelector('button')?.clientWidth ?? 352;
     const gap = 16;
     const totalWidth = cardWidth + gap;
 
@@ -109,8 +108,9 @@ export const Carousel = ({
 
   const handleCardClose = (index: number) => {
     if (carouselRef.current) {
-      const cardWidth = 320; // w-80 (320px)
-      const gap = isMobile() ? 16 : 16; // gap-4 (16px)
+      const cardWidth =
+        carouselRef.current?.querySelector('button')?.clientWidth ?? 352;
+      const gap = 16;
       const scrollPosition = (cardWidth + gap) * index;
       carouselRef.current.scrollTo({
         left: scrollPosition,
@@ -249,7 +249,7 @@ export const Card = ({
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white font-sans dark:bg-neutral-900"
+              className="relative z-[60] mx-auto my-10 flex max-h-[90vh] max-w-5xl flex-col overflow-hidden rounded-3xl bg-white font-sans dark:bg-neutral-900"
             >
               {/* Sticky close button */}
               <div className="sticky top-4 z-52 flex justify-end px-8 pt-8 md:px-14 md:pt-8">
@@ -280,7 +280,9 @@ export const Card = ({
               </div>
 
               {/* Content with consistent padding */}
-              <div className="px-8 pt-8 pb-14 md:px-14">{card.content}</div>
+              <div className="overflow-y-auto px-8 pt-8 pb-14 md:px-14">
+                {card.content}
+              </div>
             </motion.div>
           </div>
         )}
@@ -288,30 +290,29 @@ export const Card = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="relative z-10 flex h-48 w-80 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900"
+        className="relative z-10 flex h-64 w-[20rem] shrink-0 flex-col justify-end overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 sm:w-[22rem]"
       >
-        <div className="absolute inset-x-0 top-0 z-30 h-full cursor-pointer bg-gradient-to-b from-black hover:scale-110 via-transparent to-transparent" />
-        {/*<div className="absolute inset-0 z-20 cursor-pointer bg-black/20 hover:bg-black/2" />*/}
-        <div className="relative z-40 p-8">
-          <motion.p
-            layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-left font-sans text-sm font-medium text-white md:text-base"
-          >
-            {card.category}
-          </motion.p>
-          <motion.p
-            layoutId={layout ? `title-${card.title}` : undefined}
-            className="max-w-xs text-left font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl"
-          >
-            {card.title}
-          </motion.p>
-        </div>
         <BlurImage
           src={card.src}
           alt={card.title}
           fill
           className="absolute inset-0 z-10 object-cover"
         />
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/95 via-black/55 to-black/10" />
+        <div className="relative z-40 w-full p-5 text-left">
+          <motion.p
+            layoutId={layout ? `category-${card.title}` : undefined}
+            className="font-sans text-xs font-medium uppercase tracking-wide text-white/80 sm:text-sm"
+          >
+            {card.category}
+          </motion.p>
+          <motion.p
+            layoutId={layout ? `title-${card.title}` : undefined}
+            className="mt-2 line-clamp-3 font-sans text-lg font-semibold leading-snug text-white sm:text-xl"
+          >
+            {card.title}
+          </motion.p>
+        </div>
       </motion.button>
     </>
   );

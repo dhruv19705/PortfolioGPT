@@ -25,6 +25,7 @@ export function getSkillCategories(config: PortfolioConfig) {
     { key: 'devops_tools', label: 'DevOps & Tools' },
     { key: 'devops_cloud', label: 'DevOps & Cloud' },
     { key: 'security', label: 'Cybersecurity' },
+    { key: 'coursework', label: 'Relevant Coursework' },
     { key: 'iot_hardware', label: 'IoT & Hardware' },
     { key: 'soft_skills', label: 'Soft Skills' },
   ];
