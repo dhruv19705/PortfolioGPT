@@ -1,0 +1,455 @@
+{
+  "personal": {
+    "name": "Dhruv Amit Shah",
+    "age": 20,
+    "location": "Mumbai, India",
+    "title": "AI & Data Science Engineer | Blockchain & NLP Researcher",
+    "email": "shahdhruv19705@gmail.com",
+    "phone": "+91 8879823117",
+    "handle": "@dhruv19705",
+    "bio": "Hey 👋\nI'm Dhruv Shah, an AI & Data Science engineer based in Mumbai, currently pursuing my B.Tech at KJ Somaiya College of Engineering with a CGPA of 9.44. I'm passionate about building things at the intersection of Generative AI, blockchain analytics, cybersecurity, NLP, FinTech, Machine Learning, and Deep Learning. From publishing IEEE research papers on cybersecurity to building forensic platforms that trace illicit crypto transactions, I enjoy working on problems that are both technically challenging and meaningful in the real world.\n\nLately, I've been spending a lot of time exploring LLMs, RAG pipelines, AI powered systems, and scalable architectures. I genuinely enjoy understanding how systems work end to end, experimenting with new technologies, and turning ideas into products or research driven solutions. Most of my projects revolve around combining strong technical foundations with practical implementation.\n\nOver the years, I've worked on projects involving Bitcoin transaction classification, anti money laundering detection, anomaly detection systems, cybersecurity simulations, and AI driven analytics platforms. For me, the fun part is solving complex problems, learning continuously, and building things that actually create impact.\n\nApart from tech, I'm really interested in startups, business strategy, and finance. I enjoy reading about how companies scale, how founders think, and why some ideas succeed while others fail. I also love connecting with ambitious and curious people, whether it's talking about AI, startups, football, cricket, business ideas, or life in general.\n\nOutside work and academics, you'll probably find me watching football as a huge fan of Real Madrid, following cricket, exploring good food places around Mumbai, or planning my next trip. I try to take at least three trips every year because traveling helps me reset, explore new perspectives, and stay sane in the middle of all the chaos.\n\nAlways open to good conversations, interesting opportunities, and building something meaningful with great people.",
+    "avatar": "/profile.jpeg",
+    "fallbackAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3"
+  },
+  "education": {
+    "current": {
+      "degree": "B.Tech in Artificial Intelligence & Data Science",
+      "institution": "KJ Somaiya College of Engineering",
+      "location": "Vidyavihar, Mumbai",
+      "duration": "Jul 2024 – Present",
+      "cgpa": "9.44/10.0",
+      "graduationDate": "May 2028"
+    },
+    "previous": {
+      "degree": "B.Tech in Computer Science & Engineering (AI & ML) — Transferred",
+      "institution": "Manipal Institute of Technology",
+      "location": "Manipal, Karnataka",
+      "duration": "May 2023 – May 2024",
+      "cgpa": "8.36/10.0",
+      "completionDate": "May 2024"
+    },
+    "achievements": [
+      "JEE Mains: 95.98 Percentile",
+      "MHTCET: 98.62 Percentile",
+      "IEEE ICCCNT 2025 – Accepted Research Paper on Healthcare Website Security",
+      "CipherCop – 1st National Police Hackathon: 4th Place",
+      "WorldQuant Brain Hackathon – Gold Level, Top 25 Rank"
+    ]
+  },
+  "experience": [
+    {
+      "company": "EUCLID – Center of Sustainable and Secure Blockchain Development",
+      "position": "Research Assistant",
+      "type": "Research",
+      "duration": "Feb 2025 – Oct 2025",
+      "location": "Mumbai, India",
+      "description": "Authored a conference paper on Vulnerability Assessment and Impact Analysis of Defacement Attacks on Healthcare Websites, accepted at the 16th International IEEE Conference on Computing, Communication and Networking Technologies (ICCCNT) 2025. Also organised an internship drive, managed industry-student interaction booths, and led the induction of multiple interns.",
+      "technologies": ["Cybersecurity", "Vulnerability Assessment", "Blockchain", "Research Writing", "IEEE Publication"]
+    },
+    {
+      "company": "Ashna AI",
+      "position": "AI/ML Intern",
+      "type": "Internship",
+      "duration": "Jun 2025 – Aug 2025",
+      "location": "Mumbai, India",
+      "description": "Developed a website that accepts PDF inputs, extracts text, applies NLP techniques, and generates a question-and-answer system without relying on external API keys. Contributed to the development of Ashna AI — India's first homegrown LLM.",
+      "technologies": ["NLP", "PDF Parsing", "Python", "LLM", "Question Answering Systems"]
+    },
+    {
+      "company": "Suvidha Foundation",
+      "position": "Machine Learning Intern",
+      "type": "Internship",
+      "duration": "May 2025 – Jun 2025",
+      "location": "Mumbai, India",
+      "description": "Developed a custom NLP and ML architecture for news summarisation, optimising for accuracy and efficiency. Analysed pre-trained models such as T5 and BART using HuggingFace Transformers, and curated high-quality datasets for model training and fine-tuning.",
+      "technologies": ["NLP", "Python", "HuggingFace", "T5", "BART", "Text Summarisation", "Dataset Curation"]
+    },
+    {
+      "company": "Comedy Club Manipal",
+      "position": "Event Manager",
+      "type": "Leadership",
+      "duration": "2023 – 2024",
+      "location": "Manipal, Karnataka",
+      "description": "Managed end-to-end logistics for a live standup comedy event featuring comedian Pranit More, coordinating with the performer, venue, and audience.",
+      "technologies": ["Event Management", "Coordination", "Leadership"]
+    }
+  ],
+  "skills": {
+    "programming": ["Python", "C++", "Java", "C", "Solidity", "HTML", "CSS", "SQL", "Prolog"],
+    "ml_ai": [
+      "Scikit-Learn", "TensorFlow", "PyTorch", "XGBoost", "LightGBM", "Logistic Regression",
+      "Random Forest", "NLP", "NLTK", "SpaCy", "HuggingFace Transformers",
+      "LangChain", "RAG Pipelines", "LLMs", "SHAP (Explainability)", "Machine Learning Pipelines", "Text Summarisation", "Sentiment Analysis",
+      "Question Answering Systems", "Multi-task Learning"
+    ],
+    "data_analytics": ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "Tableau", "PowerBI", "Advanced Excel"],
+    "web_development": ["React.js", "Flask", "FastAPI", "Streamlit", "HTML", "CSS"],
+    "blockchain": ["Solidity", "Blockchain Analytics", "Neo4j Graph Analytics", "Dark Web Crawling", "Blockchain API"],
+    "databases": ["MongoDB", "Neo4j", "SQL"],
+    "devops_tools": ["Docker", "Git", "GitHub", "n8n", "Jira"],
+    "security": ["Wireshark", "Burpsuite", "Vulnerability Assessment", "OSINT", "Cybersecurity"],
+    "soft_skills": ["Research & Publication", "Event Management", "Team Leadership", "Problem Solving", "Communication"]
+  },
+  "certifications": [
+    {
+      "name": "Databases and SQL for Data Science with Python",
+      "issuer": "IBM — Coursera",
+      "year": "2024"
+    },
+    {
+      "name": "Basics of Blockchain",
+      "issuer": "University at Buffalo & SUNY — Coursera",
+      "year": "2024"
+    },
+    {
+      "name": "Foundations of Cybersecurity",
+      "issuer": "Google",
+      "year": "2024"
+    },
+    {
+      "name": "EDA and Data Visualization in Data Science",
+      "issuer": "Scaler",
+      "year": "2024"
+    },
+    {
+      "name": "Business Intelligence (BI) Essentials",
+      "issuer": "IBM — Coursera",
+      "year": "2024"
+    },
+    {
+      "name": "Python for Data Science, AI & Development",
+      "issuer": "IBM — Coursera",
+      "year": "2024"
+    },
+    {
+      "name": "WorldQuant Brain Hackathon",
+      "issuer": "WorldQuant",
+      "achievement": "Gold Level, Top 25 Rank",
+      "year": "2025"
+    }
+  ],
+  "projects": [
+    {
+      "title": "ChainBreak – Blockchain Forensics Platform",
+      "category": "Blockchain / Cybersecurity",
+      "description": "Developed at the CipherCop 1st National Police Hackathon (4th Place). ChainBreak is a blockchain forensics and anomaly detection platform that traces illicit crypto transactions using dark web crawling, Neo4j graph analytics, ML-based anomaly detection, OSINT tools, and confidence-scored risk flagging to identify laundering tactics.",
+      "techStack": ["Python", "Neo4j", "Machine Learning", "Dark Web Crawling", "OSINT", "Blockchain Analytics"],
+      "date": "2025",
+      "status": "Completed",
+      "featured": true,
+      "achievements": ["CipherCop – 1st National Police Hackathon: 4th Place"],
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/dhruv19705/ChainBreak"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2834&auto=format&fit=crop",
+          "alt": "Forensics and network analysis"
+        }
+      ]
+    },
+    {
+      "title": "Bitcoin Transaction Classification",
+      "category": "Machine Learning",
+      "description": "Built a multi-class classification ensemble model using Random Forest, XGBoost and LightGBM to classify Bitcoin transaction types (e.g., HYIP, Gambling), achieving 98.69% accuracy. Leveraged Scikit-Learn, Pandas, and NumPy for data processing and model development. It can be used to identify patterns from a single wallet to understand what purpose the wallet is being used for.",
+      "techStack": ["Python", "Scikit-Learn", "Random Forest", "Pandas", "NumPy", "XGBoost", "LightGBM"],
+      "date": "2025",
+      "status": "Completed",
+      "featured": true,
+      "metrics": ["98.69% Classification Accuracy"],
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/dhruv19705/bitcoin_class_identification"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2940&auto=format&fit=crop",
+          "alt": "Financial data classification chart"
+        }
+      ]
+    },
+    {
+      "title": "Gold Price Prediction using News Sentiment",
+      "category": "Machine Learning / NLP",
+      "description": "Developed a hybrid model combining classification (price direction) and regression (price magnitude) using news sentiment features. Integrated NLP pipelines (TF-IDF, Word2Vec, BERT embeddings) with XGBoost and Logistic/Linear Regression, achieving 86.72% accuracy in predicting gold price movement. Includes a Streamlit GUI for real-time headline-based predictions.",
+      "techStack": ["Python", "NLP", "TF-IDF", "Word2Vec", "BERT", "Scikit-Learn", "XGBoost", "Logistic Regression", "Streamlit"],
+      "date": "2025",
+      "status": "Completed",
+      "featured": true,
+      "metrics": ["86.72% Prediction Accuracy"],
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/dhruv19705/gold-price-prediction"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=2940&auto=format&fit=crop",
+          "alt": "Gold price trend chart"
+        }
+      ]
+    },
+    {
+      "title": "All-in-One Investment Platform – Stock Sector Screener",
+      "category": "Finance / Data Science",
+      "description": "A sector-aware stock evaluation engine for Indian equities that applies sector-specific financial rules (Banking, IT, FMCG, Pharma, Energy, Metals, Auto, etc.) to generate BUY / HOLD / SELL recommendations with confidence scores. Uses a hybrid valuation engine combining sector-relative P/E, historical P/E fallback, and PEG-based adjustments. Includes parallel data fetching via yfinance and multi-threaded evaluation for speed.",
+      "techStack": ["Python", "yfinance", "Pandas", "NumPy", "Fundamental Analysis", "Sector Screening", "Valuation Modelling"],
+      "date": "2025",
+      "status": "Completed",
+      "featured": true,
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/dhruv19705/All-in-one-investment-platform"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1560221328-12fe60f83ab8?q=80&w=2948&auto=format&fit=crop",
+          "alt": "Stock market analysis dashboard"
+        }
+      ]
+    },
+    {
+      "title": "Mutual Fund Recommendation Engine",
+      "category": "Finance / Data Science",
+      "description": "A production-oriented Indian mutual fund screening and portfolio recommendation engine with category-aware discovery, quantitative feature engineering (CAGR, Sharpe, Sortino, Alpha, Beta, drawdown metrics), hybrid scoring by investment horizon (short/medium/long), and risk-profile-based portfolio allocation. Applies AUM eligibility filtering, rolling consistency checks, and benchmark-relative scoring across Equity, Hybrid, and Debt fund categories.",
+      "techStack": ["Python", "MFAPI", "yfinance", "Pandas", "NumPy", "SciPy", "Portfolio Optimisation", "Quantitative Finance"],
+      "date": "2026",
+      "status": "Completed",
+      "featured": true,
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/dhruv19705/mutual-fund-recommendation"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=2942&auto=format&fit=crop",
+          "alt": "Mutual fund portfolio allocation"
+        }
+      ]
+    },
+    {
+      "title": "PDF Q&A & MCQ Generator",
+      "category": "NLP / AI",
+      "description": "An AI-powered application that extracts text from PDF documents and generates questions, answers, and multiple-choice quizzes using state-of-the-art transformer models — without relying on external API keys. Uses deepset/roberta-base-squad2 for Q&A, T5-based fine-tuned models for question generation, and spaCy for NLP. Built during the Ashna AI internship. Features a clean Streamlit interface with confidence scoring for each answer.",
+      "techStack": ["Python", "HuggingFace Transformers", "RoBERTa", "T5", "spaCy", "PDF Parsing", "Streamlit", "NLP"],
+      "date": "2025",
+      "status": "Completed",
+      "featured": true,
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/dhruv19705/Question-Answer-Generator"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2946&auto=format&fit=crop",
+          "alt": "PDF document and question generation"
+        }
+      ]
+    },
+    {
+      "title": "AI-Based Micro-Conversion Prediction in Websites",
+      "category": "Machine Learning / Web Analytics",
+      "description": "A comprehensive web analytics platform that predicts user purchasing intent and intermediate micro-conversions using session-level clickstream data. Trains four classification models — Revenue, High Engagement, Product Interest, and Exit Risk — using XGBoost, LightGBM, and Random Forest, with automatic best-model selection by F1-score. Integrates SHAP for local explainability and features an interactive Streamlit dashboard for analytics and model performance monitoring.",
+      "techStack": ["Python", "XGBoost", "LightGBM", "Random Forest", "SHAP", "Streamlit", "Scikit-Learn", "Clickstream Analysis"],
+      "date": "2025",
+      "status": "Completed",
+      "featured": false,
+      "links": [
+        {
+          "name": "GitHub",
+          "url": "https://github.com/dhruv19705/AI-based-micro-conversion-prediction-in-websites"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop",
+          "alt": "Web analytics and conversion dashboard"
+        }
+      ]
+    }
+  ],
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/dhruv-shah-670141282",
+    "github": "https://github.com/dhruv19705",
+    "email": "mailto:shahdhruv19705@gmail.com",
+    "kaggle": "https://www.kaggle.com/dhruvamitshah",
+    "leetcode": "https://leetcode.com/dhruvshah19/"
+  },
+  "internship": {
+    "seeking": true,
+    "duration": "3–6 months",
+    "startDate": "Available Immediately",
+    "preferredLocation": "Mumbai / Remote",
+    "focusAreas": ["Generative AI & LLMs", "RAG Pipelines", "AI & Machine Learning", "NLP & Text Analytics", "Blockchain & Cybersecurity", "Data Science", "Quantitative Finance"],
+    "availability": "Open to full-time and part-time roles",
+    "workStyle": "End-to-end thinker who blends research rigour with hands-on engineering — from IEEE papers to production ML, RAG, and blockchain systems",
+    "goals": "Looking to contribute to cutting-edge AI, LLM, or blockchain projects where I can apply my research background and engineering skills to build impactful, scalable systems."
+  },
+  "personality": {
+    "traits": [
+      "curious",
+      "continuous learner",
+      "research-driven",
+      "end-to-end thinker",
+      "practical builder",
+      "ambitious",
+      "collaborative",
+      "impact-focused",
+      "open-minded"
+    ],
+    "interests": [
+      "Generative AI & LLMs",
+      "RAG Pipelines",
+      "AI-Powered Systems",
+      "Scalable Architectures",
+      "Blockchain Analytics",
+      "Cybersecurity",
+      "NLP",
+      "FinTech",
+      "Machine Learning",
+      "Deep Learning",
+      "Anti-Money Laundering & Fraud Detection",
+      "Anomaly Detection",
+      "Startups & Business Strategy",
+      "Finance & Markets",
+      "Connecting with ambitious people"
+    ],
+    "hobbies": [
+      "watching football (huge Real Madrid fan)",
+      "following cricket",
+      "exploring food spots around Mumbai",
+      "traveling (at least 3 trips a year)",
+      "reading about startups, scaling, and founder mindset"
+    ],
+    "sports": ["Real Madrid (football)", "Cricket"],
+    "funFacts": [
+      "Huge Real Madrid fan — football is my go-to unwind",
+      "I aim for at least three trips every year to reset and gain new perspectives",
+      "Love exploring good food places across Mumbai",
+      "Published IEEE research on healthcare website security as a 2nd-year student",
+      "Placed 4th at India's 1st National Police Hackathon (CipherCop) with ChainBreak",
+      "Achieved 98.69% accuracy in multi-class Bitcoin transaction classification",
+      "Enjoy conversations about AI, startups, football, cricket, business ideas, or life in general"
+    ],
+    "workingStyle": "I like understanding how systems work end to end — experimenting with new tech, combining strong foundations with practical implementation, and turning ideas into products or research-driven solutions",
+    "motivation": "Solving complex, real-world problems that create impact — whether through ML, blockchain forensics, LLMs, or finance — and building meaningful things with great people"
+  },
+  "resume": {
+    "title": "Dhruv Amit Shah – Resume",
+    "description": "AI & Data Science Engineer | IEEE Researcher | Blockchain & NLP Specialist",
+    "fileType": "PDF",
+    "lastUpdated": "2025",
+    "downloadUrl": "/DhruvShah_Resume.pdf"
+  },
+  "chatbot": {
+    "name": "Dhruv",
+    "personality": "curious, thoughtful, ambitious, research-driven, conversational",
+    "tone": "friendly, warm, and professional",
+    "language": "english",
+    "responseStyle": "concise and informative",
+    "useEmojis": true,
+    "topics": ["projects", "skills", "experience", "research", "llms_rag", "hackathons", "certifications", "startups_finance", "contact", "hobbies", "fun_facts"]
+  },
+  "presetQuestions": {
+    "me": [
+      "Who are you?",
+      "Tell me about yourself",
+      "What's your background?",
+      "What are your passions?",
+      "How did you get into AI and blockchain?",
+      "Where do you see yourself in 5 years?"
+    ],
+    "professional": [
+      "What are your technical skills?",
+      "Can I see your resume?",
+      "What's your research experience?",
+      "What's your educational background?",
+      "Tell me about your internship experience",
+      "Tell me about your Ashna AI internship",
+      "Tell me about your EUCLID research role",
+      "Are you open to internships?",
+      "What makes you stand out?",
+      "Tell me about your IEEE publication",
+      "What certifications do you have?",
+      "Why should I hire you?",
+      "What is your CGPA?",
+      "What tech stack do you use?"
+    ],
+    "projects": [
+      "What projects are you most proud of?",
+      "What are you working on right now?",
+      "Tell me about ChainBreak",
+      "Explain ChainBreak in detail",
+      "How does your blockchain forensics project work?",
+      "Tell me about your Bitcoin classification project",
+      "Tell me about your gold price prediction project",
+      "What are your AI/ML projects?",
+      "What blockchain projects have you built?",
+      "Show me your NLP projects",
+      "Tell me about your finance projects",
+      "How does your mutual fund recommendation engine work?",
+      "Tell me about your PDF Q&A generator",
+      "Tell me about your stock screener project"
+    ],
+    "achievements": [
+      "What are your major achievements?",
+      "Tell me about the National Police Hackathon",
+      "Tell me about CipherCop",
+      "Tell me about your IEEE paper",
+      "Tell me about WorldQuant Brain Hackathon",
+      "What hackathons have you won?",
+      "What are your exam scores?"
+    ],
+    "contact": [
+      "How can I contact you?",
+      "What's your email?",
+      "Where can I find you online?",
+      "What kind of projects would you like to work on?",
+      "Are you based in Mumbai?"
+    ],
+    "fun": [
+      "What are your hobbies?",
+      "Are you a football or cricket fan?",
+      "Do you like traveling?",
+      "What do you do outside of tech?",
+      "Tell me something interesting about you",
+      "What motivates you?",
+      "What's a fun fact about you?"
+    ]
+  },
+  "highlights": [
+    "B.Tech AI & Data Science at KJ Somaiya — CGPA 9.44/10",
+    "Exploring LLMs, RAG pipelines, and scalable AI-powered systems",
+    "IEEE ICCCNT 2025 — accepted paper on healthcare website security (EUCLID research)",
+    "CipherCop 1st National Police Hackathon — 4th place (ChainBreak forensics platform)",
+    "98.69% accuracy — multi-class Bitcoin transaction classification",
+    "Ashna AI intern — contributed to India's first homegrown LLM; built PDF Q&A without external API keys"
+  ],
+  "research": {
+    "title": "Vulnerability Assessment and Impact Analysis of Defacement Attacks on Healthcare Websites",
+    "role": "Research Assistant",
+    "organization": "EUCLID – Center of Sustainable and Secure Blockchain Development",
+    "conference": "16th International IEEE Conference on Computing, Communication and Networking Technologies (ICCCNT) 2025",
+    "status": "Accepted",
+    "topics": ["Cybersecurity", "Healthcare Web Security", "Vulnerability Assessment", "Defacement Attacks"],
+    "summary": "Authored and submitted conference research analyzing security risks in healthcare websites, combining vulnerability assessment with impact analysis of defacement attacks."
+  },
+  "meta": {
+    "configVersion": "1.3",
+    "lastUpdated": "2026-05-24",
+    "generatedBy": "me",
+    "description": "Portfolio configuration for Dhruv Amit Shah — AI & Data Science student, IEEE researcher, and blockchain/NLP/finance engineer"
+  }
+}
