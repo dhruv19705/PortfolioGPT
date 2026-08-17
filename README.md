@@ -6,7 +6,7 @@ An AI-powered developer portfolio built with Next.js. Visitors chat with a conve
 
 ## Features
 
-- **AI chat assistant** — Powered by [Groq](https://groq.com/) (`llama-3.1-8b-instant`) via the [Vercel AI SDK](https://sdk.vercel.ai/docs), with streaming responses and tool calling.
+- **AI chat assistant** — Powered by [Groq](https://groq.com/) (`openai/gpt-oss-20b`) via the [Vercel AI SDK](https://sdk.vercel.ai/docs), with streaming responses and tool calling.
 - **Portfolio tools** — The model invokes tools to fetch real data and render rich UI cards:
   - `getPresentation` — About you, bio, highlights, personality
   - `getProjects` — Project carousel
