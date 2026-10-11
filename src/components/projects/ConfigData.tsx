@@ -1,7 +1,5 @@
 import Image from 'next/image';
-import { Image as Img } from 'lucide-react';
-import { ChevronRight, Link } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { projectData, getConfig } from '@/lib/config-loader';
 
 // Get project content from configuration
@@ -16,20 +14,9 @@ const ProjectContent = ({ project }: { project: { title: string } }) => {
 
   return (
     <div className="bg-card text-card-foreground max-w-4xl space-y-6 p-0">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="flex items-start gap-3">
-          <div className="bg-primary/10 text-primary shrink-0 rounded-lg p-2">
-            <Img className="h-6 w-6" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <h3 className="text-xl font-semibold leading-snug break-words">
-              {projectData.title}
-            </h3>
-            <p className="text-muted-foreground text-sm">{projectData.date}</p>
-          </div>
-        </div>
-
+      {/* Overview (title is already shown in the modal header) */}
+      <div className="space-y-3">
+        <p className="text-muted-foreground text-sm">{projectData.date}</p>
         <p className="text-muted-foreground leading-relaxed break-words whitespace-pre-wrap">
           {projectData.description}
         </p>
@@ -42,9 +29,9 @@ const ProjectContent = ({ project }: { project: { title: string } }) => {
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium">Status:</span>
               <span className={`text-sm px-2 py-1 rounded-full ${
-                projectData.status === 'Completed' ? 'bg-green-100 text-green-800' :
-                projectData.status === 'Ongoing' ? 'bg-blue-100 text-blue-800' :
-                'bg-gray-100 text-gray-800'
+                projectData.status === 'Completed' ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400' :
+                projectData.status === 'Ongoing' ? 'bg-blue-500/15 text-blue-700 dark:text-blue-400' :
+                'bg-muted text-muted-foreground'
               }`}>
                 {projectData.status}
               </span>
@@ -67,7 +54,7 @@ const ProjectContent = ({ project }: { project: { title: string } }) => {
               <h4 className="font-medium mb-1">Key Metrics</h4>
               <div className="flex flex-wrap gap-2">
                 {projectData.metrics.map((metric, index) => (
-                  <span key={index} className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                  <span key={index} className="text-sm bg-blue-500/15 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-md font-medium">
                     {metric}
                   </span>
                 ))}
@@ -105,11 +92,11 @@ const ProjectContent = ({ project }: { project: { title: string } }) => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 flex items-center gap-2 transition-colors"
+                className="bg-foreground text-background inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90"
               >
-                <Link className="h-4 w-4" />
-                {link.name}
-                <ChevronRight className="h-4 w-4" />
+                {link.name === 'GitHub' ? <Github className="h-4 w-4" /> : null}
+                {link.name === 'GitHub' ? 'View on GitHub' : link.name}
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             ))}
           </div>

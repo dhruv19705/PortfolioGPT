@@ -8,6 +8,7 @@ const TOOL_LABELS: Record<string, string> = {
   getPresentation: 'About Me',
   getProjects: 'Projects',
   getSkills: 'Skills',
+  getExperience: 'Experience',
   getResume: 'Resume',
   getContact: 'Contact',
   getInternship: 'Availability',

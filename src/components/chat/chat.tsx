@@ -1,7 +1,6 @@
 'use client';
 import { useChat } from '@ai-sdk/react';
 import { AnimatePresence, motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
@@ -34,50 +33,19 @@ import {
   getToolLabel,
 } from './chat-toolbar';
 
-// ClientOnly component for client-side rendering
-//@ts-ignore
-const ClientOnly = ({ children }) => {
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
-    return null;
-  }
-
-  return <>{children}</>;
-};
-
-// Define Avatar component props interface
-interface AvatarProps {
-  hasActiveTool: boolean;
-}
-
-// Dynamic import of Avatar component
-const Avatar = dynamic<AvatarProps>(
-  () =>
-    Promise.resolve(({ hasActiveTool }: AvatarProps) => {
-      // Conditional rendering based on detection
-      return (
-        <div
-          className={`flex items-center justify-center rounded-full transition-all duration-300 ${hasActiveTool ? 'h-20 w-20' : 'h-28 w-28'}`}
-        >
-          <div
-            className="relative cursor-pointer"
-            onClick={() => (window.location.href = '/')}
-          >
-            <img
-              src="/avatar.png"
-              alt="Avatar"
-              className="h-full w-full object-cover object-[center_top_-5%] scale-95 rounded-full"
-            />
-          </div>
-        </div>
-      );
-    }),
-  { ssr: false }
+const Avatar = ({ onClick }: { onClick: () => void }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    aria-label="Back to home"
+    className="bg-muted ring-border h-14 w-14 overflow-hidden rounded-full ring-1 transition-transform hover:scale-105"
+  >
+    <img
+      src="/avatar.png"
+      alt=""
+      className="h-full w-full object-cover object-top"
+    />
+  </button>
 );
 
 const MOTION_CONFIG = {
@@ -94,7 +62,7 @@ const MOTION_CONFIG = {
 const Chat = () => {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('query');
-  const [autoSubmitted, setAutoSubmitted] = useState(false);
+  const lastUrlQueryRef = useRef<string | null>(null);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [presetReply, setPresetReply] = useState<{
     question: string;
@@ -214,14 +182,6 @@ const Chat = () => {
 
   const isContentFocus = Boolean(activeToolName);
 
-  const hasToolUI = Boolean(
-    currentAIMessage?.parts?.some(
-      (p) =>
-        p.type === 'tool-invocation' &&
-        (p.toolInvocation?.state === 'result' || isLoading)
-    )
-  );
-
   const isToolInProgress = messages.some(
     (m) =>
       m.role === 'assistant' &&
@@ -306,13 +266,14 @@ const Chat = () => {
     submitQueryToAI(question); // Use the new function that bypasses presets
   };
 
+  // Run ?query= links (also when navigated to from inside the app)
   useEffect(() => {
-    if (initialQuery && !autoSubmitted) {
-      setAutoSubmitted(true);
+    if (initialQuery && initialQuery !== lastUrlQueryRef.current) {
+      lastUrlQueryRef.current = initialQuery;
       setInput('');
       submitQuery(initialQuery);
     }
-  }, [initialQuery, autoSubmitted]);
+  }, [initialQuery]);
 
   //@ts-ignore
   const onSubmit = (e) => {
@@ -359,6 +320,11 @@ const Chat = () => {
     setMessages([]);
     setErrorMessage(null);
     setIsImmersive(false);
+    if (initialQuery) {
+      // Drop ?query= so the same link can be followed again later
+      lastUrlQueryRef.current = null;
+      window.history.replaceState(null, '', '/');
+    }
   };
 
   const toggleImmersive = async () => {
@@ -412,12 +378,13 @@ const Chat = () => {
 
   const showToolbar = isContentFocus || isImmersive;
   const toolbarHeight = showToolbar ? 44 : 0;
-  const headerHeight = showToolbar ? toolbarHeight : 140;
+  const showAvatarHeader = !showToolbar && !isEmptyState;
+  const headerHeight = showToolbar ? toolbarHeight : showAvatarHeader ? 88 : 0;
 
   return (
     <div
       ref={chatRootRef}
-      className={`relative h-screen overflow-hidden bg-background transition-all duration-300 ${
+      className={`relative h-dvh overflow-hidden bg-background transition-all duration-300 ${
         isImmersive ? 'fixed inset-0 z-[60]' : ''
       }`}
       style={
@@ -442,22 +409,14 @@ const Chat = () => {
           />
         </div>
       )}
-      {/* Fixed Avatar Header with Gradient */}
-      <div
-        className={`fixed top-0 right-0 left-0 z-40 bg-gradient-to-b from-background via-background/95 to-transparent transition-all duration-300 ease-in-out ${
-          isContentFocus || isImmersive
-            ? 'pointer-events-none h-0 overflow-hidden opacity-0'
-            : ''
-        }`}
-      >
-        <div className="py-6 transition-all duration-300 ease-in-out">
+      {/* Fixed Avatar Header with Gradient (conversation view only) */}
+      {showAvatarHeader && (
+        <div className="fixed top-0 right-0 left-0 z-40 bg-gradient-to-b from-background via-background/95 to-transparent py-4">
           <div className="flex justify-center">
-            <ClientOnly>
-              <Avatar hasActiveTool={false} />
-            </ClientOnly>
+            <Avatar onClick={handleGoHome} />
           </div>
         </div>
-      </div>
+      )}
 
       {/* Main Content Area */}
       <div
@@ -467,7 +426,7 @@ const Chat = () => {
       >
         {/* Scrollable Chat Content */}
         <div
-          className="flex-1 overflow-y-auto px-2 pb-4 transition-all duration-300"
+          className="custom-scrollbar flex-1 overflow-y-auto px-2 pb-4 transition-all duration-300"
           style={{ paddingTop: `${headerHeight}px` }}
         >
           <AnimatePresence mode="wait">
@@ -532,7 +491,7 @@ const Chat = () => {
                       <SimplifiedChatView
                         message={currentAIMessage}
                         isLoading={isLoading}
-                        showToolUI={hasToolUI}
+                        showToolUI={false}
                         reload={reload}
                         addToolResult={addToolResult}
                       />

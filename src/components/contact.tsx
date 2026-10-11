@@ -1,61 +1,126 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
-import { contactInfo } from '@/lib/config-loader';
+import {
+  ArrowUpRight,
+  Check,
+  Code2,
+  Copy,
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Trophy,
+} from 'lucide-react';
+import { contactInfo, getConfig, resumeDetails } from '@/lib/config-loader';
+
+const SOCIAL_ICONS: Record<string, React.ElementType> = {
+  LinkedIn: Linkedin,
+  GitHub: Github,
+  Kaggle: Trophy,
+  LeetCode: Code2,
+};
 
 export function Contact() {
-  // Contact information now loaded from configuration
+  const { personal } = getConfig();
+  const [copied, setCopied] = useState(false);
 
-  // Function to handle opening links
-  const openLink = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contactInfo.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // Clipboard can be blocked; the mailto link still works
+    }
   };
 
   return (
-    <div className="mx-auto mt-8 w-full">
-      <div className="bg-accent w-full overflow-hidden rounded-3xl px-6 py-8 font-sans sm:px-10 md:px-16 md:py-12">
-        {/* Header Section */}
-        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-foreground text-3xl font-semibold md:text-4xl">
-            Contacts
-          </h2>
-          <span className="mt-2 sm:mt-0">
-            {contactInfo.handle}
-          </span>
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="mx-auto w-full max-w-3xl"
+    >
+      <div className="bg-card w-full overflow-hidden rounded-3xl border px-5 py-6 font-sans sm:px-8 sm:py-8">
+        <div className="mb-6 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-foreground text-2xl font-bold tracking-tight sm:text-3xl">
+              Let&apos;s talk
+            </h2>
+            <p className="text-muted-foreground mt-1 flex items-center gap-1.5 text-sm">
+              <MapPin className="h-3.5 w-3.5" /> {personal.location}
+            </p>
+          </div>
+          <span className="text-muted-foreground text-sm">{contactInfo.handle}</span>
         </div>
 
-        {/* Email Section */}
-        <div className="mt-8 flex flex-col md:mt-10">
-          <div
-            className="group mb-5 cursor-pointer"
-            onClick={() => openLink(`mailto:${contactInfo.email}`)}
-          >
-            <div className="flex items-center gap-1">
-              <span className="text-base font-medium text-blue-500 hover:underline sm:text-lg">
-                {contactInfo.email}
-              </span>
-              <ChevronRight className="h-5 w-5 text-blue-500 transition-transform duration-300 group-hover:translate-x-1" />
-            </div>
+        {/* Primary channels */}
+        <div className="grid gap-2 sm:grid-cols-2">
+          <div className="bg-muted/60 flex items-center gap-2 rounded-xl border p-1.5 pl-3">
+            <Mail className="text-brand h-4 w-4 shrink-0" />
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="text-foreground min-w-0 flex-1 truncate text-sm font-medium hover:underline"
+            >
+              {contactInfo.email}
+            </a>
+            <button
+              type="button"
+              onClick={copyEmail}
+              aria-label="Copy email address"
+              className="text-muted-foreground hover:text-foreground hover:bg-background flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors"
+            >
+              {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
+            </button>
           </div>
 
-          {/* Social Links */}
-          <div className="flex flex-wrap gap-x-6 gap-y-5 sm:gap-x-8">
-            {contactInfo.socials.map((social) => (
-              <button
+          {personal.phone && (
+            <a
+              href={`tel:${personal.phone.replace(/\s+/g, '')}`}
+              className="bg-muted/60 hover:bg-muted flex items-center gap-2 rounded-xl border px-3 py-2.5 transition-colors"
+            >
+              <Phone className="text-brand h-4 w-4 shrink-0" />
+              <span className="text-foreground text-sm font-medium">{personal.phone}</span>
+            </a>
+          )}
+        </div>
+
+        {/* Profiles */}
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+          {contactInfo.socials.map((social) => {
+            const Icon = SOCIAL_ICONS[social.name] ?? ArrowUpRight;
+            return (
+              <a
                 key={social.name}
-                className="text-muted-foreground hover:text-foreground cursor-pointer text-sm transition-colors"
-                onClick={() => openLink(social.url)}
-                title={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground hover:bg-muted group flex items-center gap-2 rounded-xl border px-3 py-2.5 text-sm transition-colors"
               >
-                {social.name}
-              </button>
-            ))}
-          </div>
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="flex-1">{social.name}</span>
+                <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+              </a>
+            );
+          })}
+          {resumeDetails.downloadUrl && (
+            <a
+              href={resumeDetails.downloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground hover:bg-muted group flex items-center gap-2 rounded-xl border px-3 py-2.5 text-sm transition-colors"
+            >
+              <FileText className="h-4 w-4 shrink-0" />
+              <span className="flex-1">Resume</span>
+              <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+            </a>
+          )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

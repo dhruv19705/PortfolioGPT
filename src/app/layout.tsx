@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react"
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -13,12 +13,22 @@ const inter = Inter({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-gpt-tau.vercel.app";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
+};
+
 export const metadata: Metadata = {
   title: {
     default: "Dhruv Amit Shah - AI & Data Science Engineer | Portfolio",
     template: "%s | Dhruv Amit Shah Portfolio"
   },
-  description: "Portfolio of Dhruv Amit Shah — AI & Data Science engineer, IEEE researcher, and Veefin intern. Projects in blockchain forensics, RAG, NLP, and quantitative finance.",
+  description: "Portfolio of Dhruv Amit Shah — AI & Data Science engineer, IEEE researcher, and Veefin intern. Projects in blockchain forensics, NLP, machine learning, and quantitative finance.",
   keywords: [
     "Dhruv Amit Shah",
     "AI Engineer",
@@ -65,7 +75,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     title: "Dhruv Amit Shah - AI & Data Science Engineer | Portfolio",
-    description: "AI & Data Science portfolio with IEEE research, blockchain forensics (ChainBreak), RAG systems, and finance ML projects.",
+    description: "AI & Data Science portfolio with IEEE research, blockchain forensics (ChainBreak), NLP systems, and finance ML projects.",
     siteName: "Dhruv Amit Shah Portfolio",
     images: [
       {
@@ -104,9 +114,6 @@ export const metadata: Metadata = {
   },
   category: "technology",
   classification: "Portfolio Website",
-  other: {
-    "google-site-verification": "your-google-verification-code-here",
-  },
 };
 
 export default function RootLayout({
@@ -117,9 +124,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="canonical" href={siteUrl} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -152,7 +156,7 @@ export default function RootLayout({
                 "Quantitative Finance",
                 "Cybersecurity Research"
               ],
-              "description": "AI & Data Science engineer and IEEE researcher. Summer Intern at Veefin building RAG and enterprise AI systems. Creator of ChainBreak blockchain forensics platform."
+              "description": "AI & Data Science engineer and IEEE researcher. Summer Intern at Veefin working on Trade Finance QA and AI microservice integration. Creator of ChainBreak, a blockchain forensics platform that placed 4th of 1000+ teams at CipherCop."
             })
           }}
         />

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#070b14"/><stop offset="1" stop-color="#0d1424"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.32" r="0.55">
+    <stop offset="0" stop-color="#f7931a" stop-opacity="0.32"/>
+    <stop offset="1" stop-color="#f7931a" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glow2" cx="0.92" cy="0.05" r="0.45">
+    <stop offset="0" stop-color="#a78bfa" stop-opacity="0.22"/>
+    <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<rect width="1200" height="800" fill="url(#grid)"/>
+<rect width="1200" height="800" fill="url(#glow)"/>
+<rect width="1200" height="800" fill="url(#glow2)"/>
+<g transform="translate(0 45)">
+<circle cx="200" cy="250" r="118" fill="#f7931a" fill-opacity="0.12" filter="url(#soft)"/><circle cx="200" cy="250" r="100" fill="#1a1206" stroke="#f7931a" stroke-width="6"/><circle cx="200" cy="250" r="82" fill="none" stroke="#f7931a" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="4 6"/><text x="200" y="290" font-size="120" font-weight="800" fill="#f7931a" text-anchor="middle">₿</text>
+<rect x="345" y="150" width="120" height="14" rx="7" fill="#f7931a" fill-opacity="0.55"/>
+<rect x="345" y="200" width="112" height="14" rx="7" fill="#f7931a" fill-opacity="0.47000000000000003"/>
+<rect x="345" y="250" width="104" height="14" rx="7" fill="#f7931a" fill-opacity="0.39"/>
+<rect x="345" y="300" width="96" height="14" rx="7" fill="#f7931a" fill-opacity="0.31000000000000005"/>
+<rect x="345" y="350" width="88" height="14" rx="7" fill="#f7931a" fill-opacity="0.23000000000000004"/>
+<rect x="505" y="135" width="230" height="230" rx="22" fill="#110d1f" stroke="#a78bfa" stroke-opacity="0.6" stroke-width="2"/>
+<rect x="527" y="170" width="186" height="46" rx="10" fill="#a78bfa" fill-opacity="0.13"/><text x="620" y="200" font-size="20" font-weight="600" fill="#ddd6fe" text-anchor="middle">Random Forest</text>
+<rect x="527" y="232" width="186" height="46" rx="10" fill="#a78bfa" fill-opacity="0.13"/><text x="620" y="262" font-size="20" font-weight="600" fill="#ddd6fe" text-anchor="middle">XGBoost</text>
+<rect x="527" y="294" width="186" height="46" rx="10" fill="#a78bfa" fill-opacity="0.13"/><text x="620" y="324" font-size="20" font-weight="600" fill="#ddd6fe" text-anchor="middle">LightGBM</text>
+<path d="M470 250 H500" stroke="#94a3b8" stroke-width="3" marker-end=""/><path d="M490 240 L502 250 L490 260" fill="none" stroke="#94a3b8" stroke-width="3"/>
+<path d="M740 250 C770 250 770 163 800 163" fill="none" stroke="#f7931a" stroke-opacity="0.45" stroke-width="2"/><text x="810" y="170" font-size="21" font-weight="600" fill="#e2e8f0">HYIP</text><rect x="935" y="151" width="200" height="22" rx="11" fill="#ffffff" fill-opacity="0.07"/><rect x="935" y="151" width="182" height="22" rx="11" fill="#f7931a"/>
+<path d="M740 250 C770 250 770 221 800 221" fill="none" stroke="#38bdf8" stroke-opacity="0.45" stroke-width="2"/><text x="810" y="228" font-size="21" font-weight="600" fill="#e2e8f0">Gambling</text><rect x="935" y="209" width="200" height="22" rx="11" fill="#ffffff" fill-opacity="0.07"/><rect x="935" y="209" width="12" height="22" rx="11" fill="#38bdf8"/>
+<path d="M740 250 C770 250 770 279 800 279" fill="none" stroke="#34d399" stroke-opacity="0.45" stroke-width="2"/><text x="810" y="286" font-size="21" font-weight="600" fill="#e2e8f0">Exchange</text><rect x="935" y="267" width="200" height="22" rx="11" fill="#ffffff" fill-opacity="0.07"/><rect x="935" y="267" width="10" height="22" rx="11" fill="#34d399"/>
+<path d="M740 250 C770 250 770 337 800 337" fill="none" stroke="#f472b6" stroke-opacity="0.45" stroke-width="2"/><text x="810" y="344" font-size="21" font-weight="600" fill="#e2e8f0">Mining</text><rect x="935" y="325" width="200" height="22" rx="11" fill="#ffffff" fill-opacity="0.07"/><rect x="935" y="325" width="10" height="22" rx="11" fill="#f472b6"/>
+<rect x="40" y="40" width="206" height="40" rx="20.0" fill="#f7931a" fill-opacity="0.14" stroke="#f7931a" stroke-opacity="0.5"/><text x="143.0" y="64" font-size="20" font-weight="600" fill="#f7931a" text-anchor="middle">98.69% ACCURACY</text>
+</g>
+</svg>

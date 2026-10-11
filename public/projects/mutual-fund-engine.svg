@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#070b14"/><stop offset="1" stop-color="#0d1424"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.32" r="0.55">
+    <stop offset="0" stop-color="#818cf8" stop-opacity="0.32"/>
+    <stop offset="1" stop-color="#818cf8" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glow2" cx="0.92" cy="0.05" r="0.45">
+    <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.22"/>
+    <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+  </pattern>
+  <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<rect width="1200" height="800" fill="url(#grid)"/>
+<rect width="1200" height="800" fill="url(#glow)"/>
+<rect width="1200" height="800" fill="url(#glow2)"/>
+<g transform="translate(0 45)">
+<path d="M300.0 125.0 A140 140 0 1 1 262.1 399.8" fill="none" stroke="#818cf8" stroke-width="46" stroke-linecap="butt"/>
+<path d="M256.7 398.1 A140 140 0 0 1 165.2 227.1" fill="none" stroke="#2dd4bf" stroke-width="46" stroke-linecap="butt"/>
+<path d="M166.9 221.7 A140 140 0 0 1 294.4 125.1" fill="none" stroke="#fbbf24" stroke-width="46" stroke-linecap="butt"/>
+<text x="300" y="259" font-size="22" fill="#94a3b8" text-anchor="middle">Moderate</text><text x="300" y="295" font-size="30" font-weight="800" fill="#e2e8f0" text-anchor="middle">risk profile</text>
+<rect x="500" y="150" width="20" height="20" rx="5" fill="#818cf8"/><text x="532" y="167" font-size="21" fill="#e2e8f0">Equity</text><text x="660" y="167" font-size="21" font-weight="700" fill="#818cf8">55%</text>
+<rect x="500" y="202" width="20" height="20" rx="5" fill="#2dd4bf"/><text x="532" y="219" font-size="21" fill="#e2e8f0">Hybrid</text><text x="660" y="219" font-size="21" font-weight="700" fill="#2dd4bf">25%</text>
+<rect x="500" y="254" width="20" height="20" rx="5" fill="#fbbf24"/><text x="532" y="271" font-size="21" fill="#e2e8f0">Debt</text><text x="660" y="271" font-size="21" font-weight="700" fill="#fbbf24">20%</text>
+<rect x="760" y="110" width="390" height="310" rx="22" fill="#0e0f24" stroke="#818cf8" stroke-opacity="0.4" stroke-width="2"/><text x="790" y="155" font-size="22" font-weight="700" fill="#e2e8f0">Fund scorecard</text>
+<text x="790" y="195" font-size="20" fill="#94a3b8">CAGR 5Y</text><text x="1120" y="195" font-size="20" font-weight="700" fill="#c7d2fe" text-anchor="end">18.4%</text>
+<text x="790" y="239" font-size="20" fill="#94a3b8">Sharpe</text><text x="1120" y="239" font-size="20" font-weight="700" fill="#c7d2fe" text-anchor="end">1.42</text>
+<text x="790" y="283" font-size="20" fill="#94a3b8">Sortino</text><text x="1120" y="283" font-size="20" font-weight="700" fill="#c7d2fe" text-anchor="end">2.05</text>
+<text x="790" y="327" font-size="20" fill="#94a3b8">Alpha</text><text x="1120" y="327" font-size="20" font-weight="700" fill="#c7d2fe" text-anchor="end">+3.1</text>
+<text x="790" y="371" font-size="20" fill="#94a3b8">Max DD</text><text x="1120" y="371" font-size="20" font-weight="700" fill="#c7d2fe" text-anchor="end">−12.6%</text>
+<rect x="40" y="40" width="298" height="40" rx="20.0" fill="#818cf8" fill-opacity="0.14" stroke="#818cf8" stroke-opacity="0.5"/><text x="189.0" y="64" font-size="20" font-weight="600" fill="#818cf8" text-anchor="middle">HORIZON-AWARE PORTFOLIO</text>
+</g>
+</svg>

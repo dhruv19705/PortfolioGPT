@@ -49,9 +49,10 @@ const questions = {
 
 const questionConfig = [
   { key: 'Me', color: '#329696', icon: Laugh },
+  { key: 'Experience', color: '#3B82F6', icon: BriefcaseIcon },
   { key: 'Projects', color: '#3E9858', icon: BriefcaseBusiness },
   { key: 'Skills', color: '#856ED9', icon: Layers },
-  { key: 'Achievements', color: '#B45309', icon: Trophy },
+  { key: 'Awards', color: '#B45309', icon: Trophy },
   { key: 'Resume', color: '#D97856', icon: FileText },
   { key: 'Contact', color: '#C19433', icon: UserRoundSearch },
 ];
@@ -98,6 +99,7 @@ const questionsByCategory = [
     questions: [
       'What projects are you most proud of?',
       'Tell me about ChainBreak',
+      'Tell me about your RAG project',
       'Tell me about your Bitcoin classification project',
       'Tell me about your gold price prediction project',
       'Tell me about your mutual fund recommendation engine',
@@ -180,9 +182,10 @@ export default function HelperBoost({
     // Map question keys to preset replies that match our config exactly
     const presetMapping: { [key: string]: string } = {
       Me: 'Who are you?',
+      Experience: 'Tell me about your internship experience',
       Projects: 'What projects are you most proud of?',
       Skills: 'What are your skills?',
-      Achievements: 'What are your major achievements?',
+      Awards: 'What are your major achievements?',
       Resume: 'Can I see your resume?',
       Contact: 'How can I reach you?',
     };
@@ -250,7 +253,7 @@ export default function HelperBoost({
           {isVisible && (
             <div className="w-full">
               <div
-                className="flex w-full flex-wrap gap-1 md:gap-3"
+                className="no-scrollbar flex w-full gap-1.5 overflow-x-auto px-1 pb-1"
                 style={{ justifyContent: 'safe center' }}
               >
                 {questionConfig.map(({ key, color, icon: Icon }) => (
@@ -258,10 +261,10 @@ export default function HelperBoost({
                     key={key}
                     onClick={() => handleQuestionClick(key)}
                     variant="outline"
-                    className="border-border hover:bg-border/30 h-auto min-w-[100px] flex-shrink-0 cursor-pointer rounded-xl border bg-card/80 px-4 py-3 shadow-none backdrop-blur-sm transition-none active:scale-95"
+                    className="border-border hover:bg-border/30 h-auto flex-shrink-0 cursor-pointer rounded-xl border bg-card/80 px-2.5 py-2 shadow-none backdrop-blur-sm transition-none active:scale-95"
                   >
-                    <div className="flex items-center gap-3 text-foreground">
-                      <Icon size={18} strokeWidth={2} color={color} />
+                    <div className="flex items-center gap-1.5 text-foreground">
+                      <Icon size={16} strokeWidth={2} color={color} aria-hidden />
                       <span className="text-sm font-medium">{key}</span>
                     </div>
                   </Button>
@@ -273,16 +276,17 @@ export default function HelperBoost({
                     <TooltipTrigger asChild>
                       <Drawer.Trigger
                         suppressHydrationWarning
+                        aria-label="More questions"
                         className="group relative flex flex-shrink-0 items-center justify-center"
                       >
                         <motion.div
-                          className="hover:bg-border/30 flex h-auto cursor-pointer items-center space-x-1 rounded-xl border border-border bg-card/80 px-4 py-3 text-sm backdrop-blur-sm transition-all duration-200"
+                          className="hover:bg-border/30 flex h-auto cursor-pointer items-center space-x-1 rounded-xl border border-border bg-card/80 px-3 py-2 text-sm backdrop-blur-sm transition-all duration-200"
                           whileHover={{ scale: 1 }}
                           whileTap={{ scale: 0.98 }}
                         >
                           <div className="flex items-center gap-3 text-foreground">
                             <CircleEllipsis
-                              className="h-[20px] w-[18px]"
+                              className="h-[18px] w-[18px]"
                               //style={{ color: '#3B82F6' }}
                               strokeWidth={2}
                             />

@@ -130,7 +130,7 @@ export const Carousel = ({
     >
       <div className="relative w-full">
         <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none]"
+          className="flex w-full snap-x overflow-x-scroll overscroll-x-contain scroll-smooth py-6 [scrollbar-width:none]"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -162,27 +162,29 @@ export const Carousel = ({
                   },
                 }}
                 key={'card' + index}
-                className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
+                className="rounded-3xl last:pr-[5%]"
               >
                 {item}
               </motion.div>
             ))}
           </div>
         </div>
-        <div className="mr-10 flex justify-end gap-2 md:mr-20">
+        <div className="mr-2 flex justify-end gap-2 md:mr-4">
           <button
-            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+            className="border-border bg-card text-foreground hover:bg-muted relative z-40 flex h-10 w-10 items-center justify-center rounded-full border transition-colors disabled:opacity-40"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
+            aria-label="Previous project"
           >
-            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+            <IconArrowNarrowLeft className="h-5 w-5" />
           </button>
           <button
-            className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+            className="border-border bg-card text-foreground hover:bg-muted relative z-40 flex h-10 w-10 items-center justify-center rounded-full border transition-colors disabled:opacity-40"
             onClick={scrollRight}
             disabled={!canScrollRight}
+            aria-label="Next project"
           >
-            <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+            <IconArrowNarrowRight className="h-5 w-5" />
           </button>
         </div>
       </div>
@@ -256,6 +258,7 @@ export const Card = ({
                 <button
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-black/90 shadow-md dark:bg-white/90"
                   onClick={handleClose}
+                  aria-label="Close project details"
                 >
                   <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
                 </button>
@@ -290,12 +293,14 @@ export const Card = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="relative z-10 flex h-64 w-[20rem] shrink-0 flex-col justify-end overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 sm:w-[22rem]"
+        aria-label={`Open project: ${card.title}`}
+        className="relative z-10 flex h-64 w-[17rem] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 sm:w-[22rem]"
       >
         <BlurImage
           src={card.src}
           alt={card.title}
           fill
+          sizes="(min-width: 640px) 22rem, 17rem"
           className="absolute inset-0 z-10 object-cover"
         />
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/95 via-black/55 to-black/10" />

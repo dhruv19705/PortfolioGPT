@@ -144,8 +144,12 @@ export function Resume({ embedded = false }: ResumeProps) {
                   <span>{resumeDetails.fileType}</span>
                   <span className="mx-2">•</span>
                   <span>Updated {resumeDetails.lastUpdated}</span>
-                  <span className="mx-2">•</span>
-                  <span>{resumeDetails.fileSize}</span>
+                  {resumeDetails.fileSize && (
+                    <>
+                      <span className="mx-2">•</span>
+                      <span>{resumeDetails.fileSize}</span>
+                    </>
+                  )}
                 </div>
               </div>
 

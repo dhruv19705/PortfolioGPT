@@ -1,4 +1,8 @@
 import type { PortfolioConfig } from '@/types/portfolio';
+import {
+  getFeaturedProjects,
+  getSkillCategories,
+} from '@/lib/portfolio-helpers';
 
 const OFF_TOPIC_PATTERNS = [
   /\b(weather|temperature|forecast|rain|snow)\b/i,
@@ -23,6 +27,94 @@ const ON_TOPIC_PATTERNS = [
   /\b(certif|python|ai|ml|blockchain|nlp)\b/i,
 ];
 
+function buildPortfolioContext(config: PortfolioConfig): string {
+  const {
+    personal,
+    education,
+    experience,
+    certifications,
+    social,
+    internship,
+  } = config;
+
+  const skills = getSkillCategories(config)
+    .map((c) => `${c.label}: ${c.skills.join(', ')}`)
+    .join('\n');
+
+  const jobs = experience
+    .map(
+      (e) =>
+        `- ${e.position} @ ${e.company} (${e.duration}): ${e.description.slice(0, 280)}${e.description.length > 280 ? '…' : ''}`
+    )
+    .join('\n');
+
+  const projects = getFeaturedProjects(config)
+    .map((p) => {
+      const metric = p.metrics?.[0] ?? p.achievements?.[0] ?? '';
+      return `- ${p.title} (${p.category}${metric ? `; ${metric}` : ''}): ${p.description.slice(0, 220)}${p.description.length > 220 ? '…' : ''} Tech: ${p.techStack.slice(0, 8).join(', ')}`;
+    })
+    .join('\n');
+
+  const certs = (certifications ?? [])
+    .map((c) =>
+      c.achievement
+        ? `${c.name} (${c.issuer}, ${c.year}) — ${c.achievement}`
+        : `${c.name} (${c.issuer}, ${c.year})`
+    )
+    .join('; ');
+
+  const achievements = (education.achievements ?? []).map((a) => `- ${a}`).join('\n');
+  const previous = education.previous
+    ? `${education.previous.degree} @ ${education.previous.institution} (${education.previous.cgpa})`
+    : 'n/a';
+
+  return `About: ${personal.bio}
+
+Education:
+- Current: ${education.current.degree} @ ${education.current.institution} (${education.current.duration}, CGPA ${education.current.cgpa})
+- Previous: ${previous}
+
+Skills:
+${skills}
+
+Experience:
+${jobs}
+
+Projects:
+${projects}
+
+Achievements:
+${achievements}
+
+Certifications: ${certs || 'none listed'}
+
+Availability: ${internship.availability ?? 'Open to opportunities'}
+Contact: ${personal.email}${personal.phone ? `, ${personal.phone}` : ''}; LinkedIn ${social.linkedin}; GitHub ${social.github}`.trim();
+}
+
+/** Conversational free-form chat — answer in text only, no tool cards. */
+export function generateConversationalSystemPrompt(
+  config: PortfolioConfig
+): string {
+  const { personal, chatbot } = config;
+
+  return `You are ${personal.name} (${personal.title}) in a live portfolio chat. Speak in first person ("I", "my"). Tone: ${chatbot.tone}. Style: ${chatbot.responseStyle}.
+
+This is a normal conversation — reply with short, natural chat messages (usually 2–5 sentences). Do NOT call tools. Do NOT narrate UI cards or say you are opening skills/projects panels.
+
+SCOPE: Only answer questions about ${personal.name} — background, skills, projects, education, achievements, career, contact, and availability. Politely refuse off-topic questions and steer back to portfolio topics.
+
+RULES:
+- Answer directly from the portfolio context below.
+- Never invent employers, metrics, projects, or dates.
+- Match answer length to the question (one skill → brief; "tell me about yourself" → a bit longer).
+- If asked for contact, include email and main links from context.
+
+PORTFOLIO CONTEXT:
+${buildPortfolioContext(config)}`.trim();
+}
+
+/** Tool-calling prompt (rich UI cards). Used when tools are enabled. */
 export function generateCompactSystemPrompt(config: PortfolioConfig): string {
   const { personal, education, chatbot } = config;
 

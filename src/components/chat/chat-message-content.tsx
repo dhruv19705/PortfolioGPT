@@ -71,7 +71,7 @@ const CodeBlock = ({ content }: { content: string }) => {
   );
 };
 
-const markdownComponents = {
+export const markdownComponents = {
   p: ({ children }: { children?: ReactNode }) => (
     <p className="break-words whitespace-pre-wrap">{children}</p>
   ),

@@ -3,7 +3,7 @@
 
 import { ChatRequestOptions } from 'ai';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUp, Square } from 'lucide-react';
 import React, { useEffect } from 'react';
 
 interface ChatBottombarProps {
@@ -41,7 +41,8 @@ export default function ChatBottombar({
   };
 
   useEffect(() => {
-    if (inputRef.current) {
+    // Skip on touch devices so the keyboard doesn't cover the landing page
+    if (inputRef.current && window.matchMedia('(pointer: fine)').matches) {
       inputRef.current.focus();
     }
   }, [inputRef]);
@@ -58,7 +59,7 @@ export default function ChatBottombar({
         autoComplete="off"
         data-lpignore="true"
       >
-        <div className="mx-auto flex items-center rounded-full border border-border bg-muted py-2 pr-2 pl-6">
+        <div className="mx-auto flex items-center rounded-full border border-border bg-muted py-1.5 pr-1.5 pl-5 transition-colors focus-within:border-brand/60">
           <input
             ref={inputRef}
             type="text"
@@ -66,28 +67,38 @@ export default function ChatBottombar({
             onChange={handleInputChange}
             onKeyDown={handleKeyPress}
             placeholder={
-              isToolInProgress ? 'Tool is in progress...' : 'Ask me anything'
+              isLoading
+                ? 'Thinking…'
+                : 'Ask about my projects, experience, skills…'
             }
-            className="text-md w-full border-none bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
+            aria-label="Ask a question"
+            enterKeyHint="send"
+            className="w-full border-none bg-transparent text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
             disabled={isToolInProgress || isLoading}
             autoComplete="off"
             suppressHydrationWarning
           />
 
-          <button
-            type="submit"
-            suppressHydrationWarning
-            disabled={isLoading || !input.trim() || isToolInProgress}
-            className="flex items-center justify-center rounded-full bg-[#0171E3] p-2 text-white disabled:opacity-50"
-            onClick={(e) => {
-              if (isLoading) {
-                e.preventDefault();
-                stop();
-              }
-            }}
-          >
-            <ArrowRight className="h-6 w-6" />
-          </button>
+          {isLoading ? (
+            <button
+              type="button"
+              onClick={stop}
+              aria-label="Stop generating"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background"
+            >
+              <Square className="h-3.5 w-3.5 fill-current" />
+            </button>
+          ) : (
+            <button
+              type="submit"
+              suppressHydrationWarning
+              disabled={!input.trim() || isToolInProgress}
+              aria-label="Send"
+              className="bg-brand flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white transition-opacity disabled:opacity-40"
+            >
+              <ArrowUp className="h-5 w-5" />
+            </button>
+          )}
         </div>
       </form>
     </motion.div>

@@ -7,7 +7,7 @@
     "email": "shahdhruv19705@gmail.com",
     "phone": "+91 8879823117",
     "handle": "@dhruv19705",
-    "bio": "Hey 👋\nI'm Dhruv Shah, an AI & Data Science engineer based in Mumbai, currently in my 3rd year of B.Tech at KJ Somaiya College of Engineering with a CGPA of 9.53. I'm a Summer Intern at Veefin, building enterprise AI systems — RAG-based RFP automation, Recovery Intelligence microservices, and Apache Camel integration workflows — alongside QA automation with Postman and prompt-engineered test pipelines. I'm passionate about building things at the intersection of Generative AI, blockchain analytics, cybersecurity, NLP, FinTech, Machine Learning, and Deep Learning. From publishing IEEE research papers on cybersecurity to building forensic platforms that trace illicit crypto transactions, I enjoy working on problems that are both technically challenging and meaningful in the real world.\n\nLately, I've been spending a lot of time exploring LLMs, RAG pipelines, AI powered systems, and scalable architectures. I genuinely enjoy understanding how systems work end to end, experimenting with new technologies, and turning ideas into products or research driven solutions. Most of my projects revolve around combining strong technical foundations with practical implementation.\n\nOver the years, I've worked on projects involving Bitcoin transaction classification, anti money laundering detection, anomaly detection systems, cybersecurity simulations, and AI driven analytics platforms. For me, the fun part is solving complex problems, learning continuously, and building things that actually create impact.\n\nApart from tech, I'm really interested in startups, business strategy, and finance. I enjoy reading about how companies scale, how founders think, and why some ideas succeed while others fail. I also love connecting with ambitious and curious people, whether it's talking about AI, startups, football, cricket, business ideas, or life in general.\n\nOutside work and academics, you'll probably find me watching football as a huge fan of Real Madrid, following cricket, exploring good food places around Mumbai, or planning my next trip. I try to take at least three trips every year because traveling helps me reset, explore new perspectives, and stay sane in the middle of all the chaos.\n\nAlways open to good conversations, interesting opportunities, and building something meaningful with great people.",
+    "bio": "Hey 👋\nI'm Dhruv Shah, an AI & Data Science engineer based in Mumbai, currently in my 3rd year of B.Tech at KJ Somaiya College of Engineering with a CGPA of 9.53. I'm a Summer Intern at Veefin, where I contribute to an AI-powered Recovery Intelligence microservice, build Apache Camel ETL and integration workflows that orchestrate microservices, use prompt engineering to generate AI test scenarios for Trade Finance, and help build an internal HR management platform. I'm passionate about building things at the intersection of Generative AI, blockchain analytics, cybersecurity, NLP, FinTech, Machine Learning, and Deep Learning. From publishing IEEE research papers on cybersecurity to building forensic platforms that trace illicit crypto transactions, I enjoy working on problems that are both technically challenging and meaningful in the real world.\n\nLately, I've been spending a lot of time exploring LLMs, RAG pipelines, AI powered systems, and scalable architectures. I genuinely enjoy understanding how systems work end to end, experimenting with new technologies, and turning ideas into products or research driven solutions. Most of my projects revolve around combining strong technical foundations with practical implementation.\n\nOver the years, I've worked on projects involving Bitcoin transaction classification, anti money laundering detection, anomaly detection systems, cybersecurity simulations, and AI driven analytics platforms. For me, the fun part is solving complex problems, learning continuously, and building things that actually create impact.\n\nApart from tech, I'm really interested in startups, business strategy, and finance. I enjoy reading about how companies scale, how founders think, and why some ideas succeed while others fail. I also love connecting with ambitious and curious people, whether it's talking about AI, startups, football, cricket, business ideas, or life in general.\n\nOutside work and academics, you'll probably find me watching football as a huge fan of Real Madrid, following cricket, exploring good food places around Mumbai, or planning my next trip. I try to take at least three trips every year because traveling helps me reset, explore new perspectives, and stay sane in the middle of all the chaos.\n\nAlways open to good conversations, interesting opportunities, and building something meaningful with great people.",
     "avatar": "/profile.jpeg",
     "fallbackAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3"
   },
@@ -32,7 +32,7 @@
       "JEE Mains: 95.98 Percentile",
       "MHTCET: 98.62 Percentile",
       "IEEE ICCCNT 2025 – Accepted Research Paper on Healthcare Website Security",
-      "CipherCop – 1st National Police Hackathon: 4th Place",
+      "CipherCop – 1st National Police Hackathon: 4th Place out of 1000+ teams",
       "WorldQuant Brain Hackathon – Gold Level, Top 25 Rank"
     ]
   },
@@ -43,8 +43,8 @@
       "type": "Internship",
       "duration": "May 2026 – Present",
       "location": "Mumbai, India",
-      "description": "Validated end-to-end Trade Finance workflows by testing Import Letter of Credit (LC) lifecycles across Issuing Banks, Advising Banks, and Exporters. Performed UI, backend integration, and REST API testing with Postman — validating payloads, status codes, business logic, error handling, multi-party data consistency, and Maker-Checker authorisation workflows. Integrated prompt engineering into QA workflows for AI-generated test scenarios and synthetic test data, accelerating test data creation by 200%. Contributed to an AI-powered Recovery Intelligence microservice for debtor prioritisation within the enterprise Collection Management System (CMS). Assisted in building a RAG-based RFP automation platform and Apache Camel ETL workflows to integrate AI microservices into existing enterprise systems.",
-      "technologies": ["Postman", "REST API Testing", "RAG", "Apache Camel", "ETL", "Prompt Engineering", "Enterprise AI", "Trade Finance", "QA Automation"]
+      "description": "Contributed to an AI-powered Recovery Intelligence microservice that prioritises debtors via configurable business rules and risk insights within the enterprise Collection Management System (CMS). Integrated prompt engineering into QA workflows to generate AI-driven test scenarios and synthetic banking data, tripling test data creation speed, and worked with the QA team on bug retesting across Trade Finance modules. Built Apache Camel–based ETL and integration workflows to orchestrate microservices and automate cross-system data exchange. Assisted in developing an internal HR management platform that streamlines employee workflows and data management across the organisation.",
+      "technologies": ["Apache Camel", "ETL / Integration", "Microservices", "Prompt Engineering", "Enterprise AI", "Trade Finance", "QA", "Postman"]
     },
     {
       "company": "EUCLID – Center of Sustainable and Secure Blockchain Development",
@@ -52,7 +52,8 @@
       "type": "Research",
       "duration": "Feb 2025 – Oct 2025",
       "location": "Mumbai, India",
-      "description": "Authored a conference paper on Vulnerability Assessment and Impact Analysis of Defacement Attacks on Healthcare Websites, accepted at the 16th International IEEE Conference on Computing, Communication and Networking Technologies (ICCCNT) 2025. Also organised an internship drive, managed industry-student interaction booths, and led the induction of multiple interns.",
+      "description": "Co-authored a conference paper on Vulnerability Assessment and Impact Analysis of Defacement Attacks on Healthcare Websites, accepted at the 16th International IEEE Conference on Computing, Communication and Networking Technologies (ICCCNT) 2025. Also organised an internship drive, managed industry-student interaction booths, and led the induction of multiple interns.",
+      "link": "https://drive.google.com/file/d/1WODODTXMJMntDUtpD2Uh1ileFzm9TPHv/view?usp=drivesdk",
       "technologies": ["Cybersecurity", "Vulnerability Assessment", "Blockchain", "Research Writing", "IEEE Publication"]
     },
     {
@@ -61,7 +62,7 @@
       "type": "Internship",
       "duration": "Jun 2025 – Aug 2025",
       "location": "Mumbai, India",
-      "description": "Developed a website that accepts PDF inputs, extracts text, applies NLP techniques, and generates a question-and-answer system without relying on external API keys. Contributed to the development of Ashna AI — India's first homegrown LLM.",
+      "description": "Developed a website that accepts PDF inputs, extracts text, applies NLP techniques, and generates a question-and-answer system without relying on external API keys. Contributed to Ashna AI, an early Indian-origin LLM.",
       "technologies": ["NLP", "PDF Parsing", "Python", "LLM", "Question Answering Systems"]
     },
     {
@@ -88,16 +89,16 @@
     "ml_ai": [
       "Scikit-Learn", "TensorFlow", "PyTorch", "XGBoost", "LightGBM", "Logistic Regression",
       "Random Forest", "NLP", "NLTK", "SpaCy", "HuggingFace Transformers",
-      "LangChain", "RAG Pipelines", "LLMs", "SHAP (Explainability)", "Machine Learning Pipelines", "Text Summarisation", "Sentiment Analysis",
+      "LangChain", "RAG Pipelines", "FAISS", "Sentence Transformers", "LLM APIs (Groq, OpenAI)", "LLMs", "SHAP (Explainability)", "Machine Learning Pipelines", "Text Summarisation", "Sentiment Analysis",
       "Question Answering Systems", "Multi-task Learning", "BeautifulSoup", "Selenium", "Tkinter"
     ],
     "data_analytics": ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly", "Tableau", "PowerBI", "Advanced Excel", "MS Office"],
-    "web_development": ["React.js", "Flask", "FastAPI", "Streamlit", "HTML", "CSS"],
+    "web_development": ["React.js", "Next.js", "Flask", "FastAPI", "REST APIs", "Streamlit", "HTML", "CSS"],
     "blockchain": ["Solidity", "Blockchain Analytics", "Neo4j Graph Analytics", "Dark Web Crawling", "Blockchain API"],
     "databases": ["MongoDB", "Neo4j", "SQL"],
     "devops_tools": ["Docker", "Git", "GitHub", "Postman", "n8n", "Jira", "Apache Camel"],
     "security": ["Wireshark", "Burpsuite", "Vulnerability Assessment", "OSINT", "Cybersecurity"],
-    "coursework": ["Data Structures & Algorithms", "Operating Systems", "Database Management Systems", "Machine Learning", "Deep Learning", "NLP", "Artificial Neural Networks", "Big Data Analytics", "Agentic AI", "Cryptographic Algorithms", "Computer Networks"],
+    "coursework": ["Data Structures & Algorithms", "Operating Systems", "Database Management Systems", "Machine Learning", "Deep Learning", "NLP", "Artificial Neural Networks", "Big Data Analytics", "Agentic AI", "Statistics & Probability", "Cryptographic Algorithms", "Computer Networks"],
     "soft_skills": ["Research & Publication", "Event Management", "Team Leadership", "Problem Solving", "Communication"]
   },
   "certifications": [
@@ -142,12 +143,12 @@
     {
       "title": "ChainBreak – Blockchain Forensics Platform",
       "category": "Blockchain / Cybersecurity",
-      "description": "Developed at the CipherCop 1st National Police Hackathon (4th Place). ChainBreak is a comprehensive Bitcoin transaction tracking and analysis platform combining blockchain analytics with dark web intelligence to map pseudo-anonymized transaction graphs — detecting wallet clusters and tracing illicit patterns like peel chains and chain-hopping. Implements custom graph analysis algorithms for multi-party transaction flows with real-time risk scoring, Neo4j graph analytics, ML-based anomaly detection, OSINT enrichment, and confidence-scored risk flagging.",
+      "description": "Built for CipherCop – the 1st National Police Hackathon. ChainBreak is a comprehensive Bitcoin transaction tracking and analysis platform combining blockchain analytics with dark web intelligence to map pseudo-anonymized transaction graphs — detecting wallet clusters and tracing illicit patterns like peel chains and chain-hopping. Implements custom graph analysis algorithms for multi-party transaction flows with real-time risk scoring, Neo4j graph analytics, ML-based anomaly detection, OSINT enrichment, and confidence-scored risk flagging to reduce false positives. Placed 4th nationally out of 1000+ teams and was presented to law-enforcement judges as a working forensics tool.",
       "techStack": ["Python", "Neo4j", "Docker", "Flask", "MongoDB", "Tor", "Dark Web Crawler", "React.js", "Blockchain API", "Machine Learning", "OSINT"],
       "date": "2025",
       "status": "Completed",
       "featured": true,
-      "achievements": ["CipherCop – 1st National Police Hackathon: 4th Place"],
+      "achievements": ["CipherCop – 1st National Police Hackathon: 4th Place out of 1000+ teams"],
       "links": [
         {
           "name": "GitHub",
@@ -156,8 +157,24 @@
       ],
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80&auto=format&fit=crop",
-          "alt": "ChainBreak blockchain forensics platform"
+          "src": "/projects/chainbreak.svg",
+          "alt": "ChainBreak cover: Bitcoin wallet clusters with a traced peel-chain path and risk score"
+        }
+      ]
+    },
+    {
+      "title": "Local Codebase RAG Assistant",
+      "category": "Generative AI / RAG",
+      "description": "A full-stack Retrieval-Augmented Generation app for natural-language search over entire code repositories. Ingests a ZIP or local folder, parses source into functions and classes (AST for Python, language-aware parsing for JS, TS, Java, C++, and Go), chunks code along structural boundaries, and indexes Sentence Transformer embeddings locally in FAISS. A Groq-hosted LLM streams grounded, context-aware answers with file and line-number citations that open in an interactive code viewer, with session memory for follow-up questions.",
+      "techStack": ["Python", "FastAPI", "Next.js", "React", "FAISS", "Sentence Transformers", "Groq LLM", "RAG", "Tailwind CSS"],
+      "date": "2025",
+      "status": "Completed",
+      "featured": true,
+      "links": [],
+      "images": [
+        {
+          "src": "/projects/codebase-rag-assistant.svg",
+          "alt": "Codebase RAG cover: code chunks embedded into a FAISS index and an answer citing file and line numbers"
         }
       ]
     },
@@ -178,8 +195,8 @@
       ],
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1200&q=80&auto=format&fit=crop",
-          "alt": "Bitcoin transaction classification project"
+          "src": "/projects/bitcoin-classification.svg",
+          "alt": "Bitcoin classification cover: transactions flowing through a Random Forest, XGBoost and LightGBM ensemble into class probabilities"
         }
       ]
     },
@@ -200,8 +217,8 @@
       ],
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=1200&q=80&auto=format&fit=crop",
-          "alt": "Gold price prediction using news sentiment"
+          "src": "/projects/gold-price-prediction.svg",
+          "alt": "Gold price prediction cover: news headlines with sentiment scores feeding a rising XAU/USD chart"
         }
       ]
     },
@@ -221,8 +238,8 @@
       ],
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&auto=format&fit=crop",
-          "alt": "Stock fundamental analysis and recommendation system"
+          "src": "/projects/stock-fundamental-analysis.svg",
+          "alt": "Stock analysis cover: daily candlestick chart beside a fundamental scorecard and BUY recommendation"
         }
       ]
     },
@@ -242,8 +259,8 @@
       ],
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop",
-          "alt": "Mutual fund recommendation engine"
+          "src": "/projects/mutual-fund-engine.svg",
+          "alt": "Mutual fund engine cover: Equity/Hybrid/Debt allocation donut with a Sharpe, Sortino and Alpha scorecard"
         }
       ]
     },
@@ -263,8 +280,8 @@
       ],
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80&auto=format&fit=crop",
-          "alt": "PDF Q&A and MCQ generator"
+          "src": "/projects/pdf-qa-generator.svg",
+          "alt": "PDF Q&A cover: a PDF passing through RoBERTa and T5 to produce a multiple-choice question"
         }
       ]
     },
@@ -284,8 +301,8 @@
       ],
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop",
-          "alt": "AI-based micro-conversion prediction dashboard"
+          "src": "/projects/micro-conversion-prediction.svg",
+          "alt": "Micro-conversion cover: clickstream funnel from sessions to purchase with SHAP feature explanations"
         }
       ]
     }
@@ -295,7 +312,8 @@
     "github": "https://github.com/dhruv19705",
     "email": "mailto:shahdhruv19705@gmail.com",
     "kaggle": "https://www.kaggle.com/dhruvamitshah",
-    "leetcode": "https://leetcode.com/dhruvshah19/"
+    "leetcode": "https://leetcode.com/dhruvshah19/",
+    "portfolio": "https://portfolio-gpt-tau.vercel.app"
   },
   "internship": {
     "seeking": true,
@@ -349,8 +367,8 @@
       "I aim for at least three trips every year to reset and gain new perspectives",
       "Love exploring good food places across Mumbai",
       "Published IEEE research on healthcare website security as a 2nd-year student",
-      "Currently a Summer Intern at Veefin building RAG and enterprise AI microservices",
-      "Placed 4th at India's 1st National Police Hackathon (CipherCop) with ChainBreak",
+      "Currently a Summer Intern at Veefin building ETL pipelines for an AI Recovery Intelligence microservice",
+      "Placed 4th out of 1000+ teams at India's 1st National Police Hackathon (CipherCop) with ChainBreak",
       "Achieved 98.69% accuracy in multi-class Bitcoin transaction classification",
       "Enjoy conversations about AI, startups, football, cricket, business ideas, or life in general"
     ],
@@ -361,7 +379,7 @@
     "title": "Dhruv Amit Shah – Resume",
     "description": "AI & Data Science Engineer | IEEE Researcher | Blockchain & NLP Specialist",
     "fileType": "PDF",
-    "lastUpdated": "2026",
+    "lastUpdated": "Oct 2026",
     "downloadUrl": "/DhruvShah_Resume.pdf"
   },
   "chatbot": {
@@ -405,6 +423,7 @@
       "Tell me about ChainBreak",
       "Explain ChainBreak in detail",
       "How does your blockchain forensics project work?",
+      "Tell me about your RAG project",
       "Tell me about your Bitcoin classification project",
       "Tell me about your gold price prediction project",
       "What are your AI/ML projects?",
@@ -444,10 +463,9 @@
   },
   "highlights": [
     "B.Tech AI & Data Science at KJ Somaiya (3rd Year) — CGPA 9.5275/10",
-    "Summer Intern at Veefin — RAG-based RFP automation, Recovery Intelligence CMS, Apache Camel ETL",
+    "Summer Intern at Veefin — Trade Finance QA, AI test-data generation (3× faster), Apache Camel ETL for an AI Recovery Intelligence microservice",
     "IEEE ICCCNT 2025 — accepted paper on healthcare website security (EUCLID research)",
-    "CipherCop 1st National Police Hackathon — 4th place (ChainBreak forensics platform)",
-    "98.69% accuracy — multi-class Bitcoin transaction classification",
+    "CipherCop 1st National Police Hackathon — 4th out of 1000+ teams (ChainBreak forensics platform)",
     "WorldQuant Brain Hackathon — Gold Level"
   ],
   "research": {
@@ -457,11 +475,12 @@
     "conference": "16th International IEEE Conference on Computing, Communication and Networking Technologies (ICCCNT) 2025",
     "status": "Accepted",
     "topics": ["Cybersecurity", "Healthcare Web Security", "Vulnerability Assessment", "Defacement Attacks"],
-    "summary": "Authored and submitted conference research analyzing security risks in healthcare websites, combining vulnerability assessment with impact analysis of defacement attacks."
+    "summary": "Co-authored a conference paper analysing security risks in healthcare websites, combining vulnerability assessment with impact analysis of defacement attacks.",
+    "link": "https://drive.google.com/file/d/1WODODTXMJMntDUtpD2Uh1ileFzm9TPHv/view?usp=drivesdk"
   },
   "meta": {
     "configVersion": "2.0",
-    "lastUpdated": "2026-07-05",
+    "lastUpdated": "2026-10-10",
     "generatedBy": "me",
     "description": "Portfolio configuration for Dhruv Amit Shah — AI & Data Science student, IEEE researcher, and blockchain/NLP/finance engineer"
   }

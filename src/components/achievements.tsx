@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, GraduationCap, Trophy } from 'lucide-react';
+import { Award, ExternalLink, GraduationCap, Trophy } from 'lucide-react';
 import { getConfig } from '@/lib/config-loader';
 import { buildHighlightsSummary } from '@/lib/portfolio-helpers';
 
@@ -15,7 +15,7 @@ export function Achievements() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-accent mx-auto w-full max-w-4xl rounded-3xl px-6 py-8 sm:px-10"
+      className="bg-card mx-auto w-full max-w-4xl rounded-3xl border px-5 py-6 sm:px-8"
     >
       <div className="mb-6 flex items-center gap-3">
         <Trophy className="text-primary h-6 w-6" />
@@ -46,6 +46,16 @@ export function Achievements() {
           <p className="text-muted-foreground mt-1 text-xs">
             {research.conference} · {research.status}
           </p>
+          {research.link && (
+            <a
+              href={research.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand mt-2 inline-flex items-center gap-1 text-xs font-medium hover:underline"
+            >
+              View certificate <ExternalLink className="h-3 w-3" />
+            </a>
+          )}
         </div>
       )}
 

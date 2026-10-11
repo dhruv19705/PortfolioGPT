@@ -1,9 +1,10 @@
 import { createGroq } from '@ai-sdk/groq';
 import { type CoreMessage, streamText } from 'ai';
 
-import { SYSTEM_PROMPT } from './prompt';
 import { createCachedStreamResponse } from '@/lib/cached-stream-response';
 import {
+  generateCompactSystemPrompt,
+  generateConversationalSystemPrompt,
   getOffTopicRefusal,
   isOffTopicQuestion,
 } from '@/lib/chat-prompts';
@@ -87,23 +88,32 @@ export async function POST(req: Request) {
       }
     }
 
-    trimmedMessages.unshift(SYSTEM_PROMPT);
+    // Free-form chat is conversational text; preset buttons own the rich tool cards.
+    const systemPrompt = textOnly
+      ? generateConversationalSystemPrompt(getConfig())
+      : generateCompactSystemPrompt(getConfig());
 
-    const tools = {
-      getProjects,
-      getPresentation,
-      getResume,
-      getContact,
-      getSkills,
-      getInternship,
-      getAchievements,
-    };
+    trimmedMessages.unshift({
+      role: 'system' as const,
+      content: systemPrompt,
+    });
+
+    const tools = textOnly
+      ? undefined
+      : {
+          getProjects,
+          getPresentation,
+          getResume,
+          getContact,
+          getSkills,
+          getInternship,
+          getAchievements,
+        };
 
     const result = streamText({
       model: groq('openai/gpt-oss-20b'),
       messages: trimmedMessages as CoreMessage[],
-      tools,
-      maxSteps: 2,
+      ...(tools ? { tools, maxSteps: 2 } : {}),
       onError: (error) => {
         console.error('[CHAT-API] Stream error:', error);
       },

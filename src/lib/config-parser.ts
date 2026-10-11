@@ -114,7 +114,7 @@ ${highlights}
         { name: 'Twitter', url: social.twitter },
         { name: 'Kaggle', url: social.kaggle },
         { name: 'LeetCode', url: social.leetcode },
-      ].filter((social) => social.url !== ''),
+      ].filter((social) => Boolean(social.url)),
     };
   }
 
@@ -179,7 +179,7 @@ ${highlights}
         : ''
     } Key milestones: ${(education.achievements ?? []).slice(0, 2).join('; ')}.`;
 
-    const hireReply = `I'd bring three things to your team: **published IEEE research**, **${projects.filter((p) => p.featured).length}+ featured projects** (including ${flagship}), and **real internship experience** at Ashna AI and Suvidha Foundation. I'm research-driven, ship fast, and love turning complex data into production systems.`;
+    const hireReply = `I'd bring three things to your team: **published IEEE research**, **${projects.filter((p) => p.featured).length}+ featured projects** (including ${flagship}), and **real industry experience** at Veefin, Ashna AI, and Suvidha Foundation. I'm research-driven, ship fast, and love turning complex data into production systems.`;
 
     const replies: Record<string, { reply: string; tool: string }> = {
       'Who are you?': { reply: personal.bio, tool: 'getPresentation' },
@@ -209,7 +209,7 @@ ${highlights}
         reply: `My core stack spans ${topSkills.join(', ')}, plus blockchain analytics, NLP, and quantitative finance tools. I also hold ${certCount} certifications from IBM, Google, and more.`,
         tool: 'getSkills',
       },
-      "What's your educational background?": { reply: educationReply, tool: 'getSkills' },
+      "What's your educational background?": { reply: educationReply, tool: 'getExperience' },
       'What is your CGPA?': {
         reply: `My current CGPA is **${education.current.cgpa}** in ${education.current.degree} at ${education.current.institution}.${education.previous ? ` Previously ${education.previous.cgpa} at ${education.previous.institution}.` : ''}`,
         tool: '',
@@ -251,14 +251,14 @@ ${highlights}
         reply: currentRole
           ? `I'm currently a **${currentRole.position}** at **${currentRole.company}** (${currentRole.duration}). I'm also in my 3rd year at ${education.current.institution} (CGPA ${education.current.cgpa}).`
           : `I'm currently pursuing my degree at ${education.current.institution}.`,
-        tool: 'getSkills',
+        tool: 'getExperience',
       },
       'What projects are you most proud of?': {
         reply: `My flagship project is **${flagship}** — plus ML, NLP, and FinTech builds spanning blockchain forensics, Bitcoin classification (98.69% accuracy), and production finance tools.`,
         tool: 'getProjects',
       },
       'Tell me about ChainBreak': {
-        reply: `**ChainBreak** is my blockchain forensics platform built for CipherCop (4th place). It traces illicit crypto via dark web crawling, Neo4j graph analytics, ML anomaly detection, and OSINT — with confidence-scored risk flagging.`,
+        reply: `**ChainBreak** is my blockchain forensics platform built for CipherCop (4th out of 1000+ teams). It traces illicit crypto via dark web crawling, Neo4j graph analytics, ML anomaly detection, and OSINT — with confidence-scored risk flagging.`,
         tool: 'getProjects',
       },
       'How does your blockchain forensics project work?': {
@@ -266,7 +266,7 @@ ${highlights}
         tool: 'getProjects',
       },
       'What are your AI/ML projects?': {
-        reply: `Key ML builds: Bitcoin transaction classification (98.69%), gold price prediction via NLP sentiment (86.72%), micro-conversion prediction with SHAP explainability, and a mutual fund recommendation engine.`,
+        reply: `Key AI/ML builds: a **Local Codebase RAG Assistant** (FAISS + Sentence Transformers + Groq, with line-level citations), Bitcoin transaction classification (98.69%), gold price prediction via NLP sentiment (86.72%), micro-conversion prediction with SHAP explainability, and a mutual fund recommendation engine.`,
         tool: 'getProjects',
       },
       'What blockchain projects have you built?': {
@@ -290,15 +290,15 @@ ${highlights}
         tool: 'getProjects',
       },
       'What are your major achievements?': {
-        reply: `Highlights: IEEE ICCCNT 2025 paper, CipherCop hackathon 4th place, 98.69% Bitcoin classification accuracy, WorldQuant Gold Top 25, JEE 95.98 & MHTCET 98.62 percentile.`,
+        reply: `Highlights: IEEE ICCCNT 2025 paper, CipherCop hackathon 4th out of 1000+ teams, WorldQuant Gold Top 25, JEE 95.98 & MHTCET 98.62 percentile.`,
         tool: 'getAchievements',
       },
       'Tell me about the National Police Hackathon': {
-        reply: `At **CipherCop – 1st National Police Hackathon** I placed **4th** with **ChainBreak** — a blockchain forensics platform tracing illicit crypto via dark web crawling, graph analytics, and ML anomaly detection.`,
+        reply: `At **CipherCop – 1st National Police Hackathon** I placed **4th out of 1000+ teams** with **ChainBreak** — a blockchain forensics platform tracing illicit crypto via dark web crawling, graph analytics, and ML anomaly detection.`,
         tool: 'getAchievements',
       },
       'What hackathons have you won?': {
-        reply: `CipherCop National Police Hackathon — **4th place** (ChainBreak). WorldQuant Brain Hackathon — **Gold level, Top 25 rank**.`,
+        reply: `CipherCop National Police Hackathon — **4th out of 1000+ teams** (ChainBreak). WorldQuant Brain Hackathon — **Gold level, Top 25 rank**.`,
         tool: 'getAchievements',
       },
       'What are your exam scores?': {
@@ -310,7 +310,7 @@ ${highlights}
         tool: 'getResume',
       },
       'How can I reach you?': {
-        reply: `Reach me at **${personal.email}**${personal.phone ? ` or ${personal.phone}` : ''}. Based in ${personal.location}, ${internship.availability.toLowerCase()}.`,
+        reply: `Reach me at **${personal.email}**${personal.phone ? ` or ${personal.phone}` : ''}. Based in ${personal.location}. ${internship.availability}.`,
         tool: 'getContact',
       },
       'How can I contact you?': {
@@ -374,20 +374,20 @@ ${highlights}
         tool: 'getPresentation',
       },
       'How was your experience working as freelancer?': {
-        reply: `I've taken on freelance and project-based work alongside my studies, building end-to-end ML and web systems. My internship experience at Ashna AI and Suvidha Foundation reflects that same self-directed, delivery-focused approach.`,
-        tool: 'getSkills',
+        reply: `I've taken on freelance and project-based work alongside my studies, building end-to-end ML and web systems. My internships at Veefin, Ashna AI, and Suvidha Foundation reflect that same self-directed, delivery-focused approach.`,
+        tool: 'getExperience',
       },
       'Tell me about your internship experience': {
-        reply: `I'm currently a **Summer Intern at Veefin** (RAG-based RFP automation, Recovery Intelligence CMS, Apache Camel ETL, Postman QA). Previously **AI/ML Intern at Ashna AI**, **ML Intern at Suvidha Foundation**, and **Research Assistant at EUCLID** with an accepted IEEE paper.`,
-        tool: 'getSkills',
+        reply: `I'm currently a **Summer Intern at Veefin** (AI Recovery Intelligence microservice, Apache Camel integration workflows, AI-generated Trade Finance test data, internal HR platform). Previously **AI/ML Intern at Ashna AI**, **ML Intern at Suvidha Foundation**, and **Research Assistant at EUCLID** with an accepted IEEE paper.`,
+        tool: 'getExperience',
       },
       'Tell me about your Veefin internship': {
-        reply: `At **Veefin** (May 2026 – Present) I validate Trade Finance LC workflows, run REST API testing with Postman, build prompt-engineered QA pipelines (200% faster test data), and contribute to RAG-based RFP automation and Recovery Intelligence microservices integrated via Apache Camel.`,
-        tool: 'getSkills',
+        reply: `At **Veefin** (May 2026 – Present) I contribute to an **AI-powered Recovery Intelligence microservice** that prioritises debtors via configurable business rules and risk insights, build **Apache Camel ETL/integration workflows** that orchestrate microservices, use prompt engineering to generate AI test scenarios and synthetic banking data (**3× faster** test data creation) while retesting bugs with the QA team, and help build an internal **HR management platform**.`,
+        tool: 'getExperience',
       },
       'Tell me about your Ashna AI internship': {
-        reply: `At **Ashna AI** (Jun–Aug 2025) I built a PDF-to-Q&A system using NLP without external API keys, and contributed to India's first homegrown LLM. Stack: HuggingFace, RoBERTa, T5, spaCy, Streamlit.`,
-        tool: 'getSkills',
+        reply: `At **Ashna AI** (Jun–Aug 2025) I built a PDF-to-Q&A system using NLP without external API keys, and contributed to Ashna AI, an early Indian-origin LLM. Stack: HuggingFace, RoBERTa, T5, spaCy, Streamlit.`,
+        tool: 'getExperience',
       },
       'Tell me about your EUCLID research role': {
         reply: research
@@ -414,7 +414,11 @@ ${highlights}
         tool: 'getProjects',
       },
       'Explain ChainBreak in detail': {
-        reply: `**ChainBreak** (CipherCop, 4th place) traces illicit crypto through: (1) dark web crawling for transaction intel, (2) Neo4j graph analytics for wallet relationships, (3) ML anomaly detection, (4) OSINT enrichment, and (5) confidence-scored risk flags for investigators.`,
+        reply: `**ChainBreak** (CipherCop, 4th of 1000+ teams) traces illicit crypto through: (1) dark web crawling for transaction intel, (2) Neo4j graph analytics for wallet relationships, (3) ML anomaly detection, (4) OSINT enrichment, and (5) confidence-scored risk flags for investigators.`,
+        tool: 'getProjects',
+      },
+      'Tell me about your RAG project': {
+        reply: `My **Local Codebase RAG Assistant** lets you ask natural-language questions about an entire code repository. It parses source into functions and classes, chunks along structural boundaries, indexes Sentence Transformer embeddings in **FAISS**, and streams grounded answers from a Groq-hosted LLM with **file and line-number citations** that open in an interactive code viewer. Stack: Python, FastAPI, Next.js/React.`,
         tool: 'getProjects',
       },
       'Tell me about your Bitcoin classification project': {

@@ -2,12 +2,15 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { getConfig, profileInfo } from '@/lib/config-loader';
 
 export function Presentation() {
   const profile = profileInfo;
   const config = getConfig();
+  const [expanded, setExpanded] = useState(false);
+  const paragraphs = profile.description.split(/\n\s*\n/);
+  const visibleBio = expanded ? paragraphs : paragraphs.slice(0, 2);
   const tags = [
     ...config.personal.title.split('|').map((t) => t.trim()),
     'IEEE Researcher',
@@ -38,10 +41,10 @@ export function Presentation() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-5xl py-6 font-sans">
-      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+    <div className="mx-auto w-full max-w-5xl py-4 font-sans">
+      <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
         {/* Image section */}
-        <div className="relative mx-auto aspect-square w-full max-w-sm">
+        <div className="relative mx-auto aspect-square w-full max-w-[16rem] md:sticky md:top-4 md:max-w-sm">
           <div className="relative h-full w-full overflow-hidden rounded-2xl">
             <motion.div
               initial={{ scale: 0.92, opacity: 0 }}
@@ -82,14 +85,27 @@ export function Presentation() {
             </div>
           </motion.div>
 
-          <motion.p
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={paragraphAnimation}
-            className="text-foreground mt-6 leading-relaxed whitespace-pre-line"
+            className="text-foreground/90 mt-5 space-y-3 leading-relaxed"
           >
-            {profile.description}
-          </motion.p>
+            {visibleBio.map((para) => (
+              <p key={para.slice(0, 40)} className="whitespace-pre-line">
+                {para}
+              </p>
+            ))}
+            {paragraphs.length > 2 && (
+              <button
+                type="button"
+                onClick={() => setExpanded((v) => !v)}
+                className="text-brand text-sm font-medium hover:underline"
+              >
+                {expanded ? 'Show less' : 'Read more'}
+              </button>
+            )}
+          </motion.div>
 
           {/* Tags/Keywords */}
           <motion.div

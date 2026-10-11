@@ -8,7 +8,7 @@ import { getConfig } from '@/lib/config-loader';
 const AvailabilityCard = () => {
   const router = useRouter();
   const config = getConfig();
-  const { personal, internship, experience, education } = config;
+  const { personal, internship, education } = config;
   const readSkills = (...keys: string[]) => {
     for (const key of keys) {
       const value = config.skills[key];
@@ -40,21 +40,21 @@ const AvailabilityCard = () => {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-accent mx-auto mt-8 w-full max-w-4xl rounded-3xl px-6 py-8 font-sans sm:px-10 md:px-16 md:py-12"
+      className="bg-card mx-auto w-full max-w-4xl rounded-3xl border px-5 py-6 font-sans sm:px-8 sm:py-8"
     >
       {/* Header */}
-      <div className="mb-6 flex flex-col items-center sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-4">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex min-w-0 items-center gap-4">
           {/* Avatar placeholder */}
-          <div className="bg-muted h-16 w-16 overflow-hidden rounded-full shadow-md">
+          <div className="bg-muted h-14 w-14 shrink-0 overflow-hidden rounded-full ring-1 ring-border">
             <img
               src={personal.avatar}
               alt={personal.name}
-              className="h-full w-full object-cover object-[center_top_-5%] scale-95"
+              className="h-full w-full object-cover object-top"
             />
           </div>
-          <div>
-            <h2 className="text-foreground text-2xl font-semibold">
+          <div className="min-w-0">
+            <h2 className="text-foreground text-xl font-semibold sm:text-2xl">
               {personal.name}
             </h2>
             <p className="text-muted-foreground text-sm">
@@ -64,27 +64,20 @@ const AvailabilityCard = () => {
         </div>
 
         {/* Enhanced Live badge with availability status */}
-        <div className="mt-4 flex flex-col items-center gap-2 sm:mt-0 sm:items-end">
-          {internship.seeking && (
-            <>
-              <span className="flex items-center gap-1 rounded-full border border-green-500 px-3 py-0.5 text-sm font-medium text-green-500">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
-                </span>
-                Available Now
-              </span>
-              <p className="text-xs text-muted-foreground text-center sm:text-right">
-                {internship.focusAreas.join(', ')}
-              </p>
-            </>
-          )}
-        </div>
+        {internship.seeking && (
+          <span className="flex shrink-0 items-center gap-1.5 self-start rounded-full border border-emerald-500/50 bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-700 sm:self-auto dark:text-emerald-400">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            </span>
+            Open to opportunities
+          </span>
+        )}
       </div>
 
       {/* Availability Highlight Section */}
       {internship.seeking && (
-        <div className="mb-8 rounded-2xl bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-6 border border-green-200 dark:border-green-800">
+        <div className="mb-8 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center">
               <Briefcase className="h-4 w-4 text-white" />
@@ -94,15 +87,19 @@ const AvailabilityCard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p className="text-sm font-medium text-foreground mb-1">Status</p>
-              <p className="text-sm text-green-600 dark:text-green-400 font-semibold">
-                ✅ {internship.availability}
+              <p className="text-sm text-emerald-700 dark:text-emerald-400 font-medium">
+                {internship.availability}
               </p>
             </div>
             <div>
               <p className="text-sm font-medium text-foreground mb-1">Looking for</p>
-              <p className="text-sm text-blue-600 dark:text-blue-400 font-semibold">
-                {internship.focusAreas.join(', ')}
-              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {internship.focusAreas.map((area) => (
+                  <span key={area} className="bg-muted text-foreground rounded-full px-2.5 py-0.5 text-xs">
+                    {area}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -113,9 +110,9 @@ const AvailabilityCard = () => {
         <div className="flex items-start gap-3">
           <CalendarDays className="mt-1 h-5 w-5 text-blue-500" />
           <div>
-            <p className="text-foreground text-sm font-medium">Duration</p>
+            <p className="text-foreground text-sm font-medium">Preferred duration</p>
             <p className="text-muted-foreground text-sm">
-              {internship.seeking ? `${internship.duration} starting ${internship.startDate}` : 'Open to opportunities'}
+              {internship.seeking ? internship.duration : 'Open to opportunities'}
             </p>
           </div>
         </div>
@@ -124,7 +121,7 @@ const AvailabilityCard = () => {
           <div>
             <p className="text-foreground text-sm font-medium">Location</p>
             <p className="text-muted-foreground text-sm">
-              {personal.location} • {internship.preferredLocation}
+              Based in {personal.location} · {internship.preferredLocation}
             </p>
           </div>
         </div>
@@ -163,18 +160,18 @@ const AvailabilityCard = () => {
         <p className="text-foreground mb-2 text-lg font-semibold">
           What I bring
         </p>
-        <p className="text-foreground text-sm">
-          {experience[0]?.description || 'Real-world professional experience.'} <br /> 
-          {keyAchievements[0] || 'Notable achievements in my field.'} <br /> 
-          {experience.length > 1 ? experience[1]?.description?.slice(0, 100) : 'Strong technical background and diverse project experience.'}
-        </p>
+        <ul className="text-muted-foreground list-disc space-y-1.5 pl-5 text-sm">
+          {(config.highlights?.length ? config.highlights : keyAchievements).map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
       </div>
 
       {/* Goal */}
       <div className="mt-8">
         <p className="text-foreground mb-2 text-lg font-semibold">Goal</p>
-        <p className="text-foreground text-sm">
-          {internship.goals || 'Looking to make a meaningful impact through innovative technology solutions.'} 🚀
+        <p className="text-muted-foreground text-sm">
+          {internship.goals || 'Looking to make a meaningful impact through innovative technology solutions.'}
         </p>
       </div>
 
@@ -182,7 +179,7 @@ const AvailabilityCard = () => {
       <div className="mt-10 flex justify-center">
         <button
           onClick={handleContactClick}
-          className="cursor-pointer rounded-full bg-black px-6 py-3 font-semibold text-white transition-colors duration-300 hover:bg-zinc-800"
+          className="bg-foreground text-background cursor-pointer rounded-full px-6 py-2.5 text-sm font-semibold transition-opacity hover:opacity-90"
         >
           Contact me
         </button>
