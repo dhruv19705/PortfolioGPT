@@ -27,6 +27,7 @@ import {
   ChatBubbleMessage,
 } from '@/components/ui/chat/chat-bubble';
 import HelperBoost from './HelperBoost';
+import { AuroraBackground } from '@/components/fx/aurora-background';
 import {
   ChatToolbar,
   FloatingExpandButton,
@@ -49,12 +50,18 @@ const Avatar = ({ onClick }: { onClick: () => void }) => (
 );
 
 const MOTION_CONFIG = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 20 },
-  transition: {
-    duration: 0.3,
-    ease: 'easeOut' as const,
+  initial: { opacity: 0, y: 16, filter: 'blur(4px)' },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { type: 'spring' as const, stiffness: 320, damping: 30 },
+  },
+  exit: {
+    opacity: 0,
+    y: -8,
+    filter: 'blur(4px)',
+    transition: { duration: 0.12, ease: 'easeIn' as const },
   },
 };
 
@@ -379,6 +386,7 @@ const Chat = () => {
   const showToolbar = isContentFocus || isImmersive;
   const toolbarHeight = showToolbar ? 44 : 0;
   const showAvatarHeader = !showToolbar && !isEmptyState;
+  const columnWidth = isContentFocus || isImmersive ? 'max-w-6xl' : 'max-w-3xl';
   const headerHeight = showToolbar ? toolbarHeight : showAvatarHeader ? 88 : 0;
 
   return (
@@ -393,6 +401,8 @@ const Chat = () => {
         } as React.CSSProperties
       }
     >
+      <AuroraBackground />
+
       {!showToolbar && (
         <FloatingExpandButton onToggleImmersive={toggleImmersive} />
       )}
@@ -418,17 +428,14 @@ const Chat = () => {
         </div>
       )}
 
-      {/* Main Content Area */}
-      <div
-        className={`container mx-auto flex h-full flex-col transition-all duration-300 ${
-          isContentFocus || isImmersive ? 'max-w-6xl' : 'max-w-3xl'
-        }`}
-      >
+      {/* Main Content Area — full width so the scrollbar sits at the window edge */}
+      <div className="relative z-10 flex h-full flex-col">
         {/* Scrollable Chat Content */}
         <div
-          className="custom-scrollbar flex-1 overflow-y-auto px-2 pb-4 transition-all duration-300"
+          className="custom-scrollbar flex-1 overflow-y-auto px-2 pb-4 transition-all duration-300 [mask-image:linear-gradient(to_bottom,black_calc(100%-2.5rem),transparent)]"
           style={{ paddingTop: `${headerHeight}px` }}
         >
+          <div className={`mx-auto w-full transition-all duration-300 ${columnWidth}`}>
           <AnimatePresence mode="wait">
             {isEmptyState ? (
               <motion.div
@@ -623,21 +630,25 @@ const Chat = () => {
               </div>
             )}
           </AnimatePresence>
+          </div>
         </div>
 
         {/* Fixed Bottom Bar */}
         <div
-          className={`sticky bottom-0 bg-background px-2 md:px-0 ${
-            isContentFocus || isImmersive ? 'pt-1 pb-2' : 'pt-3 md:pb-4'
+          className={`mx-auto w-full px-2 md:px-0 ${columnWidth} ${
+            isContentFocus || isImmersive ? 'pt-1 pb-2' : 'pt-2 md:pb-4'
           }`}
         >
           <div className="relative flex flex-col items-center gap-2">
-            <HelperBoost
-              submitQuery={submitQuery}
-              setInput={setInput}
-              handlePresetReply={handlePresetReply}
-              forceCollapsed={isContentFocus || isImmersive}
-            />
+            {/* The landing page has its own question grid, so chips appear once a chat starts */}
+            {!isEmptyState && (
+              <HelperBoost
+                submitQuery={submitQuery}
+                setInput={setInput}
+                handlePresetReply={handlePresetReply}
+                forceCollapsed={isContentFocus || isImmersive}
+              />
+            )}
             <ChatBottombar
               input={input}
               handleInputChange={handleInputChange}
