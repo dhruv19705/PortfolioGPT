@@ -59,7 +59,7 @@ export default function ChatBottombar({
         autoComplete="off"
         data-lpignore="true"
       >
-        <div className="mx-auto flex items-center rounded-full border border-border bg-muted py-1.5 pr-1.5 pl-5 transition-colors focus-within:border-brand/60">
+        <div className="glow-ring mx-auto flex items-center rounded-full border border-border bg-muted/80 py-1.5 pr-1.5 pl-5 shadow-lg shadow-black/20 backdrop-blur-xl transition-colors focus-within:border-transparent">
           <input
             ref={inputRef}
             type="text"
@@ -94,7 +94,7 @@ export default function ChatBottombar({
               suppressHydrationWarning
               disabled={!input.trim() || isToolInProgress}
               aria-label="Send"
-              className="bg-brand flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white transition-opacity disabled:opacity-40"
+              className="bg-brand flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white shadow-[0_0_20px_-4px_var(--brand)] transition-all duration-300 enabled:hover:scale-105 disabled:opacity-40 disabled:shadow-none"
             >
               <ArrowUp className="h-5 w-5" />
             </button>

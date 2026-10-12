@@ -17,6 +17,9 @@ import Image from 'next/image';
 import React from 'react';
 
 import { presetReplies, getConfig } from '@/lib/config-loader';
+import { CountUp } from '@/components/fx/count-up';
+import { RotatingText } from '@/components/fx/rotating-text';
+import { SpotlightCard, trackSpotlight } from '@/components/fx/spotlight';
 
 interface ChatLandingProps {
   submitQuery: (query: string) => void;
@@ -33,17 +36,26 @@ const SUGGESTED_QUESTIONS = [
   { icon: Mail, label: 'How can I reach you?', query: 'How can I reach you?', hint: 'Email, LinkedIn, GitHub' },
 ];
 
+const BUILDS = [
+  'RAG assistants',
+  'blockchain forensics',
+  'ML for finance',
+  'NLP pipelines',
+  'enterprise AI',
+];
+
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0, y: 14, filter: 'blur(6px)' },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] },
+    filter: 'blur(0px)',
+    transition: { type: 'spring', stiffness: 260, damping: 28 },
   },
 };
 
@@ -77,26 +89,44 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery, handlePresetRepl
 
   return (
     <motion.div
-      className="flex w-full flex-col items-center px-4 pt-6 pb-4 sm:pt-10"
+      className="relative flex w-full flex-col items-center px-4 pt-6 pb-4 sm:pt-10"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
+      {/* Soft brand glow behind the hero */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 -top-24 -z-10 mx-auto h-80 max-w-2xl bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--brand)_22%,transparent),transparent)] blur-2xl"
+      />
+
       {/* Hero */}
       <motion.div variants={itemVariants} className="flex flex-col items-center text-center">
+        <div className="rounded-full bg-gradient-to-br from-brand via-violet-500 to-emerald-400 p-[2px] shadow-[0_0_40px_-8px_var(--brand)]">
         <Image
           src="/avatar.png"
           alt={personal.name}
           width={96}
           height={96}
           priority
-          className="bg-muted ring-border h-20 w-20 rounded-full object-cover object-top ring-1 sm:h-24 sm:w-24"
+          className="bg-muted ring-background h-20 w-20 rounded-full object-cover object-top ring-2 sm:h-24 sm:w-24"
         />
-        <h1 className="text-foreground mt-4 text-2xl font-bold tracking-tight sm:text-3xl">
-          Hi, I&apos;m {personal.name.split(' ')[0]} 👋
+        </div>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+          <span className="text-shimmer">Hi, I&apos;m {personal.name.split(' ')[0]}</span>{' '}
+          <motion.span
+            className="inline-block origin-[70%_70%]"
+            animate={{ rotate: [0, 16, -8, 16, 0] }}
+            transition={{ duration: 1.6, delay: 0.6, repeat: Infinity, repeatDelay: 4 }}
+          >
+            👋
+          </motion.span>
         </h1>
         <p className="text-muted-foreground mt-1.5 max-w-md text-sm sm:text-base">
           {personal.title.replace(/\s*\|\s*/g, ' · ')}
+        </p>
+        <p className="text-foreground/90 mt-2 text-base sm:text-lg">
+          I build <RotatingText words={BUILDS} />
         </p>
       </motion.div>
 
@@ -137,7 +167,7 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery, handlePresetRepl
             rel="noopener noreferrer"
             aria-label={label}
             title={label}
-            className="border-border text-muted-foreground hover:text-foreground hover:bg-muted flex h-9 w-9 items-center justify-center rounded-full border transition-colors"
+            className="border-border bg-card/40 text-muted-foreground hover:text-foreground hover:border-brand/60 hover:shadow-[0_0_18px_-4px_var(--brand)] flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
           >
             <Icon className="h-4 w-4" />
           </a>
@@ -150,11 +180,13 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery, handlePresetRepl
         className="mt-6 grid w-full max-w-md grid-cols-3 gap-2"
       >
         {stats.map((s) => (
-          <div key={s.label} className="bg-card rounded-xl border px-3 py-2.5 text-center">
+          <SpotlightCard key={s.label} className="bg-card/60 rounded-xl border px-3 py-2.5 text-center backdrop-blur-md">
             <dt className="sr-only">{s.label}</dt>
-            <dd className="text-foreground text-lg font-semibold tabular-nums">{s.value}</dd>
+            <dd className="text-foreground text-lg font-semibold tabular-nums">
+              <CountUp value={s.value} />
+            </dd>
             <dd className="text-muted-foreground text-[11px] leading-tight">{s.label}</dd>
-          </div>
+          </SpotlightCard>
         ))}
       </motion.dl>
 
@@ -173,7 +205,8 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery, handlePresetRepl
           <motion.button
             key={query}
             type="button"
-            className="bg-card hover:bg-muted group flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors"
+            className="spotlight-card bg-card/60 group flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left backdrop-blur-md"
+            onPointerMove={trackSpotlight}
             onClick={() => handleQuestionClick(query)}
             variants={itemVariants}
             whileTap={{ scale: 0.98 }}

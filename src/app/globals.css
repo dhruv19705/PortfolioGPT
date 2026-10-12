@@ -133,16 +133,21 @@
   display: none;
 }
 
-.custom-scrollbar {
-  /* For Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+@supports not selector(::-webkit-scrollbar) {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.35) transparent;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
 }
 
 /* For Chrome, Edge, and Safari */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -150,7 +155,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 155, 155, 0.5);
+  background-color: rgba(155, 155, 155, 0.25);
   border-radius: 10px;
   border: transparent;
 }
@@ -165,4 +170,205 @@ pre {
   white-space: pre;
   word-wrap: normal;
   overflow-x: auto;
+}
+/* ---------- Motion & effects ---------- */
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.aurora {
+  --mx: 50vw;
+  --my: 30vh;
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.22;
+  will-change: transform;
+}
+.dark .aurora-blob {
+  opacity: 0.28;
+}
+.aurora-blob-1 {
+  width: 42vmax;
+  height: 42vmax;
+  left: -10vmax;
+  top: -14vmax;
+  background: var(--brand);
+  animation: aurora-drift-1 22s ease-in-out infinite alternate;
+}
+.aurora-blob-2 {
+  width: 36vmax;
+  height: 36vmax;
+  right: -12vmax;
+  top: 10vmax;
+  background: #8b5cf6;
+  animation: aurora-drift-2 26s ease-in-out infinite alternate;
+}
+.aurora-blob-3 {
+  width: 30vmax;
+  height: 30vmax;
+  left: 30vw;
+  bottom: -18vmax;
+  background: #10b981;
+  opacity: 0.16;
+  animation: aurora-drift-3 30s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift-1 {
+  to { transform: translate3d(18vw, 12vh, 0) scale(1.15); }
+}
+@keyframes aurora-drift-2 {
+  to { transform: translate3d(-16vw, 16vh, 0) scale(0.9); }
+}
+@keyframes aurora-drift-3 {
+  to { transform: translate3d(-12vw, -14vh, 0) scale(1.2); }
+}
+.aurora-grid {
+  background-image: radial-gradient(color-mix(in oklab, var(--foreground) 14%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 75%);
+}
+.aurora-spotlight {
+  background: radial-gradient(
+    600px circle at var(--mx) var(--my),
+    color-mix(in oklab, var(--brand) 12%, transparent),
+    transparent 60%
+  );
+}
+
+/* Animated gradient text */
+.text-gradient-brand {
+  background: linear-gradient(90deg, var(--brand), #a78bfa, #34d399, var(--brand));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 8s linear infinite;
+}
+.text-shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--foreground) 35%,
+    color-mix(in oklab, var(--brand) 70%, white) 50%,
+    var(--foreground) 65%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s linear infinite;
+}
+@keyframes gradient-pan {
+  from { background-position: 0% 50%; }
+  to { background-position: 300% 50%; }
+}
+
+/* Cards whose border lights up under the cursor (see fx/spotlight.tsx) */
+.spotlight-card {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    220px circle at var(--sx, -999px) var(--sy, -999px),
+    color-mix(in oklab, var(--brand) 85%, white),
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--sx, -999px) var(--sy, -999px),
+    color-mix(in oklab, var(--brand) 9%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: -1;
+}
+.spotlight-card:hover {
+  transform: translateY(-2px);
+}
+.spotlight-card:hover::before,
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+/* Spinning gradient ring around the chat input while focused */
+.glow-ring {
+  position: relative;
+}
+/* Border-only ring: the mask cuts out the middle so the input stays readable */
+.glow-ring::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle), var(--brand), #a78bfa, #34d399, var(--brand));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s;
+  animation: spin-angle 4s linear infinite;
+  pointer-events: none;
+}
+/* Soft glow painted behind the input */
+.glow-ring::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle), var(--brand), #a78bfa, #34d399, var(--brand));
+  filter: blur(14px);
+  opacity: 0;
+  transition: opacity 0.35s;
+  animation: spin-angle 4s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+.glow-ring:focus-within::before {
+  opacity: 1;
+}
+.glow-ring:focus-within::after {
+  opacity: 0.35;
+}
+@keyframes spin-angle {
+  to { --angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .text-gradient-brand,
+  .text-shimmer,
+  .glow-ring::before,
+  .glow-ring::after {
+    animation: none !important;
+  }
+  .spotlight-card,
+  .spotlight-card:hover {
+    transform: none;
+    transition: none;
+  }
 }

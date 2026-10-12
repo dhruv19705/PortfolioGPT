@@ -294,14 +294,16 @@ export const Card = ({
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
         aria-label={`Open project: ${card.title}`}
-        className="relative z-10 flex h-64 w-[17rem] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900 sm:w-[22rem]"
+        whileHover={{ y: -6 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+        className="group relative z-10 flex h-64 w-[17rem] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-gray-100 shadow-lg shadow-black/30 transition-shadow duration-500 hover:shadow-[0_20px_60px_-15px_var(--brand)] dark:bg-neutral-900 sm:w-[22rem]"
       >
         <BlurImage
           src={card.src}
           alt={card.title}
           fill
           sizes="(min-width: 640px) 22rem, 17rem"
-          className="absolute inset-0 z-10 object-cover"
+          className="absolute inset-0 z-10 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/95 via-black/55 to-black/10" />
         <div className="relative z-40 w-full p-5 text-left">
